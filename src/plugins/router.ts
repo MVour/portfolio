@@ -1,12 +1,12 @@
 // src/plugins/router.ts
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-import Home from '@/components/HelloWorld.vue'
+import Welcome from '@/components/Welcome.vue'
 // import Projects from '@/components/Projects.vue'
 // import Contact from '@/components/Contact.vue'
 
 const routes : RouteRecordRaw[] = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/', name: 'Home', component: Welcome },
 //   { path: '/projects', name: 'Projects', component: () => import('@/components/Projects.vue') },
 //   { path: '/contact', name: 'Contact', component: () => import('@/components/Contact.vue') }
 ]

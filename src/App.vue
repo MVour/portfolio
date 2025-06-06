@@ -1,20 +1,22 @@
 <template>
   <v-app>
     <v-layout>
-      <v-btn @click="toggleTheme()" vriant="elevated" style="position: absolute; top:0;right:0;margin: 2%;">theme</v-btn>
-      <!-- <v-app-bar app 
-      color="transparent"
-      class="white--text">ha
-      >
+      <!-- <v-app-bar flat> -->
+        <div
+        style="position:absolute;z-index: 1000;  top:0;right:0;margin-top:1%;margin-right:5%;"
+        >
 
-        
-      </v-app-bar> -->
-    <!-- </v-app-bar> -->
-    
-    <!-- <HelloWorld /> -->
-      <!-- <v-navigation-drawer ></v-navigation-drawer> -->
+          <v-hover >
 
-      <v-main>
+            <template v-slot:default="{ isHovering, props}">  
+              <v-btn v-bind="props" size="x-large" :elevation=" isHovering ? 10 : 0" icon="mdi-theme-light-dark" @click="toggleTheme()" :variant=" 'text'" style="position: absolute;"></v-btn>
+            </template>
+          </v-hover>
+        </div>
+      <!-- </v-app-bar> -->
+      
+      
+      <v-main class="" style="border:2px solid yellow">
         <router-view />
       </v-main>
       
@@ -32,7 +34,6 @@
   const toggleTheme = () => {
     const next = theme.global.name.value === 'dark' ? 'light' : 'dark';
     theme.global.name.value = next;
-    // localStorage.setItem('theme', next);
   };
 
 
