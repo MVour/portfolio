@@ -17,6 +17,7 @@
       
       
       <v-main class="" style="border:2px solid yellow">
+        <Welcome />
         <router-view />
       </v-main>
       
@@ -27,6 +28,7 @@
 <script setup lang="ts">
   //import { useTheme } from 'vuetify'
   import { onMounted } from 'vue'
+  import Welcome from './components/Welcome.vue' 
   import { useTheme } from 'vuetify'
   const theme = useTheme()
   
