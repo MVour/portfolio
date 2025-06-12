@@ -1,9 +1,11 @@
 <template>
   <v-card
-    height="60vh"
+    height="30vh"
+    width="100%"
     class="d-flex justify-center align-center"
     style="position: relative; overflow: hidden;"
     flat
+    :color="theme.current.value.colors.background" 
   >
     <div class="cube-container">
       <div
@@ -85,7 +87,18 @@ function getCubeStyle(cube: CubeData) {
 function handleCubeClick(cube: CubeData) {
   console.log('Cube clicked:', cube.id)
 }
+
+
+
+
+
 </script>
+
+
+
+
+
+
 
 <style scoped>
 .cube-container {
