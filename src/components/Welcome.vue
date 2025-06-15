@@ -1,6 +1,6 @@
 <template>
   <v-card
-    height="30vh"
+    height="70vh"
     width="100%"
     class="d-flex justify-center align-center"
     style="position: relative; overflow: hidden;"
@@ -25,8 +25,8 @@
     >
       <v-avatar size="200" icon="mdi-account" />
       <div class="ml-6 text-left">
-        <div class="display-1">BLAH</div>
-        <div class="display-1">BLAH</div>
+        <div class="display-1">{{ name_first }}</div>
+        <div class="display-1">{{ name_last }}</div>
     </div>
     </v-card-text>
   </v-card>
@@ -35,6 +35,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
+
+import personalInfo from '@/data/personal.json'  
+
+const name = personalInfo.name
+const name_first = name.split(' ')[0]; 
+const name_last = name.split(' ')[1];
+const city = personalInfo.city
+const country = personalInfo.country
+const linkedin = personalInfo.linkedin
+const github = personalInfo.github
+
 
 interface CubeData {
   id: number

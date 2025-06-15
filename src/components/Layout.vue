@@ -1,84 +1,123 @@
 <template>
+    
+    <Welcome width="100%" />
+    <div style="display:flex;flex-flow:column;max-width: 100%;height:auto">
         
-        <v-app-bar  app  elevation="0"  hide-on-scroll height="300"  :color="theme.current.value.colors.background">
-            <Welcome width="100%" />
-        </v-app-bar>
-        
-        <v-navigation-drawer app permanent border="0" :color="theme.current.value.colors.background">
-            <!-- :bg-color="theme.current.value.colors.surface"  -->
-            <!-- :bg-color="theme.current.value.colors.surface"  -->
-            <v-tabs v-model="tab"
-                    bg-color="transparent"
-                    direction="vertical" 
-                    grow
-                    key="tabs"
-                    :items="tabs"
-                    selected-class="gradient-bg"
-                >
-                    
-                <!-- :base-color="theme.current.value.colors.primary"  -->
-                <!-- :active-color="theme.current.value.colors.secondary" -->
-                <!-- :base-color="theme.current.value.colors." -->
-                <v-tab v-for="(tab, index) in tabs" :key="tab.title" variant="flat" 
-                :color="theme.current.value.colors.secondary"
-                    base-color="transparent"
-                    @click="handleTabChange(index, tab.title)"
+        <v-row>
+            <v-col :cols="calCols[0]">
+                <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
+                >  
+                    <v-btn v-if="showToggleTabsBtn" 
+                        @click="showTabs=!showTabs" 
+                        :icon="showTabs ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+                        variant="elevated"
                     >
-                    <!-- selected-class="gradient-bg" -->
-                    {{ tab.title }}
-                    </v-tab>
-            </v-tabs> 
-        </v-navigation-drawer>
-    
-    
-        <v-main id="main-scroll" style="overflow-y:auto">
-            <v-sheet :color="theme.current.value.colors.background">
-
-                <Section v-for="tab in tabs" :key="tab.title" 
-                ref="sections" 
-                :title="tab.title"
-                :section-id="slagify(tab.title)"
-                />
-            </v-sheet>
-        </v-main>
-    
+                    </v-btn>
+                    <!-- tabs -->
+                    <v-tabs v-model="tab" v-if="showTabs" 
+                        style="width:100%"
+                        :bg-color="theme.current.value.colors.background"
+                        direction="vertical" 
+                        key="tabs"
+                        :items="tabs"
+                        selected-class="gradient-bg"
+                        grow
+                    >
+                        <v-tab v-for="(tab, index) in tabs" :key="tab.title" variant="flat" 
+                            :color="theme.current.value.colors.secondary"
+                            base-color="transparent"
+                            @click="handleTabChange(index, tab.title)"
+                        >
+                            {{ tab.title }}
+                        </v-tab>
+                    </v-tabs> 
+                </div>
+            </v-col>
+            <v-col :cols="calCols[1]">
+                <v-sheet :color="theme.current.value.colors.background">
+                    
+                    <component v-for="tab in tabs" :key="tab.title" :is="tab.component"
+                        ref="sections" 
+                        :title="tab.title"
+                        :section-id="slagify(tab.title)"
+                    />
+                </v-sheet>
+            </v-col>
+        </v-row>
+    </div>
 </template>
 
 <script setup lang="ts">
 
 import Section from './Section.vue'
-import { ref, watch, onMounted, nextTick, onBeforeUnmount } from 'vue'
+import Personal from './Sections/Personal.vue'
+import Contact from './Sections/Contact.vue'
+import Education from './Sections/Education.vue'
+import { ref, watch, onMounted, nextTick, onBeforeUnmount, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useTheme } from 'vuetify'
+import { useTheme, useDisplay } from 'vuetify'
 
 const route = useRoute()
 const router = useRouter()
 
 const theme = useTheme()
+const display = useDisplay()
 
 const tab = ref<number | null>(null)
+const showTabs = ref<boolean>(true)
+const showTabsAsFloat = ref<boolean>(false)
+const showToggleTabsBtn = ref<boolean>(false)
 const sections = ref<InstanceType<typeof Section>[]>([])
     
 
 const tabs = [
-  { text: 'Tab 1', title: 'Tab 1', content: 'Content for Tab 1' },
-  { text: 'Tab 2', title: 'Tab 2', content: 'Content for Tab 2' },
-  { text: 'Tab 3', title: 'Tab 3', content: 'Content for Tab 3' },
-  { text: 'Tab 4', title: 'Tab 4', content: 'Content for Tab 4' },
-  { text: 'Tab 5', title: 'Tab 5', content: 'Content for Tab 5' } , 
-  { text: 'Tab 6', title: 'Tab 6', content: 'Content for Tab 6' },
-  { text: 'Tab 7', title: 'Tab 7', content: 'Content for Tab 7' },
-  { text: 'Tab 8', title: 'Tab 8', content: 'Content for Tab 8' },
-  { text: 'Tab 9', title: 'Tab 9', content: 'Content for Tab 9' }  
+  { text: 'Personal Info', title: 'Personal Info', component: Personal },
+  { text: 'Contact', title: 'Contact', component: Contact  },
+  { text: 'Education', title: 'Education', component: Education  },
+  { text: 'Work History', title: 'Work History', component: Section  },
+  { text: 'Projects', title: 'Projects', component: Section  },
+//   { text: 'Skills', title: 'Skills', component: Section  },
+//   { text: 'Certifications', title: 'Certifications', component: Section  },
+//   { text: 'Publications', title: 'Publications', component: Section  },
 ]
 
 watch(tab, (newTab) => {
   console.log('Tab changed to:', newTab);
 });
 
+watch(display.name, (newDisplay) => {
+    if (newDisplay === 'sm' || newDisplay === 'xs') {
+        showTabs.value = false;
+        showToggleTabsBtn.value = true;
+        showTabsAsFloat.value = true;
+    } else {
+        showTabs.value = true;
+        showToggleTabsBtn.value = false;  
+        showTabsAsFloat.value = false;
+    }
+})
+
 const slagify = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, '-');
 }
+
+const calCols = computed( () => {
+    switch (display.name.value) {
+        case 'xs':
+            return [3, 12];
+        case 'sm':
+            return [3, 12];
+        case 'md':
+            return [2, 10];
+        case 'lg':
+            return [2, 10];
+        case 'xl':
+            return [2, 10];
+        default:
+            return [2, 10];
+    }
+})
+
 
 
 function scrollToSection(index: number) {
@@ -285,6 +324,23 @@ watch(() => route.hash, (newHash, oldHash) => {
         ) !important;
         /* color: rgb(var(--v-theme-secondary)) !important */
         color:beige
+    }
+
+    .stickyTabs {
+        display: flex; 
+        height: 60vh; 
+        position: sticky; 
+        top: 20%; 
+        width: 100%;
+    }
+
+    .floatTabs {
+        position: fixed; /* Changed from fixed to absolute */
+        top: 100px; /* Add this line to position the tabs at the bottom */
+        left: 0; /* Add this line to align the tabs to the left */
+        right: 0; /* Add this line to stretch the tabs across the width */
+        z-index: 1000; /* Add this line to ensure the tabs are above other content */
+        width: 25%
     }
 
 </style>

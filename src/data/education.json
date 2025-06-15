@@ -1,0 +1,38 @@
+[
+    {
+        "year_start": 2017, 
+        "year_end": 2024, 
+        "institution": { 
+            "full_name": "National and Kapodistrian University of Athens", 
+            "name": "NKUA", 
+            "location": "Greece", 
+            "info": "National and Kapodistrian University of Athens", 
+            "img_path": "nkua.png",
+            "additional_info": { 
+                "inst_link": "https://en.uoa.gr/",
+                "dpt": { "name": "DIT", "link": "https://dpt.uoa.gr/" },
+                "info": "Department of Informatics and Telecommunications"
+            } 
+        }, 
+        "degree": "BSc in Informatics and Telecommunications", 
+        "grade": "A"
+    },
+    {
+        "year_start": 2014, 
+        "year_end": 2017, 
+        "institution": { 
+            "full_name": "Anavryta Experimental Lyceum", 
+            "name": "Anavryta Experimental Lyceum", 
+            "location": "Greece", 
+            "info": "Anavryta Experimental Lyceum", 
+            "img_path": "anavryta.png",
+            "additional_info": { 
+                "inst_link": "", 
+                "dpt": { "name": "", "link": "" }, 
+                "info": "" 
+            } 
+        }, 
+        "degree": "High School", 
+        "grade": "B"
+    }
+]

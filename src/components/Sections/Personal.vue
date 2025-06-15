@@ -1,33 +1,20 @@
 <template>
 
-    <v-card style="margin:50px auto  50px auto;padding:20px" :id="sectionId"  height="auto" :color="theme.current.value.colors.primary" variant="text">
+    <v-card :id="sectionId"  
+        style="margin:50px auto  50px auto;padding:20px" 
+        height="auto" 
+        :color="theme.current.value.colors.primary" 
+        variant="text"
+    >
 
         <v-card-title>{{ title }} </v-card-title>
-        <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
-        <v-card-text style="display: flex;flex-flow: column;">
-            <v-slide-group>
-
-                <v-card :color="theme.current.value.colors.surface" variant="flat" v-for="project in content.projects" :key="project.name" style="min-width:250px;margin:10px;min-height: 300px;">
-                    
-                    <v-card-title>{{ project.name }}</v-card-title>
-                    <v-card-subtitle>{{ project.descr }}</v-card-subtitle>
-                    <v-card-text>
-                        <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                            {{ tag }}
-                        </v-chip>
-                    </v-card-text>
-                </v-card>
-            </v-slide-group>
-
-            <v-timeline>
-
-                <v-timeline-item v-for="(item, index) in content.projects" :key="index">
-                    <v-card>
-                        <v-card-title>{{ item.name }}</v-card-title>
-                        <v-card-subtitle>{{ item.descr }}</v-card-subtitle>
-                    </v-card>
-                </v-timeline-item>
-            </v-timeline>
+        <!-- <v-card-subtitle>{{ personalInfo. }}</v-card-subtitle> -->
+        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
+            {{ personalInfo.info }}
+            <v-divider class="ma-2"></v-divider>
+            <div>{{ personalInfo.job_title }}</div>
+            <v-divider class="ma-2"></v-divider>
+            <div>{{ personalInfo.city }}, {{ personalInfo.country }}</div>
         </v-card-text>
     </v-card>
 
@@ -35,6 +22,10 @@
 
 <script setup lang="ts">
 import { useTheme } from 'vuetify/lib/composables/theme';
+import personalInfo from '@/data/personal.json'
+
+
+
 
 const theme = useTheme(); 
 
