@@ -1,0 +1,44 @@
+{
+    "technologies": [
+        {
+            "tech": "nodeJs",
+            "img": "",  
+            "description": "JavaScript runtime built on Chrome's V8 JavaScript engine"
+        },
+        {
+            "tech": "kafka",
+            "img": "",  
+            "description": "A distributed event streaming platform"
+        },
+        {
+            "tech": "java",
+            "img": "",
+            "description": "A high-level, class-based, object-oriented programming language"
+        },
+        {
+            "tech": "python",
+            "img": "",
+            "description": "A high-level programming language known for its readability and versatility"
+        },
+        {
+            "tech": "nodeJs",
+            "img": "",
+            "description": "JavaScript runtime built on Chrome's V8 JavaScript engine"
+        },
+        {
+            "tech": "kafka",
+            "img": "",
+            "description": "A distributed event streaming platform"
+        },
+        {
+            "tech": "java",
+            "img": "",
+            "description": "A high-level, class-based, object-oriented programming language"
+        },
+        {
+            "tech": "python",
+            "img": "",
+            "description": "A high-level programming language known for its readability and versatility"    
+        }
+    ]
+}

@@ -1,9 +1,7 @@
 <template>
     
     <Welcome width="100%" />
-    <div style="display:flex;flex-flow:column;max-width: 100%;height:auto">
-        
-        <v-row>
+        <v-row >
             <v-col :cols="calCols[0]">
                 <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
                 >  
@@ -18,12 +16,13 @@
                         style="width:100%"
                         :bg-color="theme.current.value.colors.background"
                         direction="vertical" 
-                        key="tabs"
+                        key="text"
                         :items="tabs"
                         selected-class="gradient-bg"
                         grow
                     >
-                        <v-tab v-for="(tab, index) in tabs" :key="tab.title" variant="flat" 
+                        <v-tab v-for="(tab, index) in tabs" :key="tab.text" variant="flat" style="white-space: normal;word-break: break-word ;"
+                            :value="tab.text"
                             :color="theme.current.value.colors.secondary"
                             base-color="transparent"
                             @click="handleTabChange(index, tab.title)"
@@ -34,17 +33,14 @@
                 </div>
             </v-col>
             <v-col :cols="calCols[1]">
-                <v-sheet :color="theme.current.value.colors.background">
-                    
-                    <component v-for="tab in tabs" :key="tab.title" :is="tab.component"
-                        ref="sections" 
-                        :title="tab.title"
-                        :section-id="slagify(tab.title)"
-                    />
-                </v-sheet>
+                <component v-for="tab in tabs" :key="tab.text" :is="tab.component"
+                ref="sections" 
+                :value="tab.title"
+                :title="tab.title"
+                :section-id="slagify(tab.title)" style="overflow:visible;"
+                />
             </v-col>
         </v-row>
-    </div>
 </template>
 
 <script setup lang="ts">
@@ -52,7 +48,8 @@
 import Section from './Section.vue'
 import Personal from './Sections/Personal.vue'
 import Contact from './Sections/Contact.vue'
-import Education from './Sections/Education.vue'
+import History from './Sections/History.vue'
+import Projects from './Sections/Projects.vue'
 import { ref, watch, onMounted, nextTick, onBeforeUnmount, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTheme, useDisplay } from 'vuetify'
@@ -67,26 +64,29 @@ const tab = ref<number | null>(null)
 const showTabs = ref<boolean>(true)
 const showTabsAsFloat = ref<boolean>(false)
 const showToggleTabsBtn = ref<boolean>(false)
-const sections = ref<InstanceType<typeof Section>[]>([])
+
+const sections = ref<InstanceType<typeof Section | typeof Personal | typeof Contact | typeof History>[]>()
     
 
 const tabs = [
-  { text: 'Personal Info', title: 'Personal Info', component: Personal },
-  { text: 'Contact', title: 'Contact', component: Contact  },
-  { text: 'Education', title: 'Education', component: Education  },
-  { text: 'Work History', title: 'Work History', component: Section  },
-  { text: 'Projects', title: 'Projects', component: Section  },
-//   { text: 'Skills', title: 'Skills', component: Section  },
-//   { text: 'Certifications', title: 'Certifications', component: Section  },
-//   { text: 'Publications', title: 'Publications', component: Section  },
+    { text: 'Personal Info', title: 'Personal Info', component: Personal },
+    { text: 'Contact', title: 'Contact', component: Contact  },
+    // { text: 'Publications', title: 'Publications', component: Section  },
+    { text: 'History', title: 'Education & Work History', component: History  },
+    { text: 'Projects', title: 'Projects', component: Projects  },
+    // { text: 'Skills', title: 'Skills', component: Section  },
+    //   { text: 'Certifications', title: 'Certifications', component: Section  },
 ]
 
-watch(tab, (newTab) => {
-  console.log('Tab changed to:', newTab);
-});
 
 watch(display.name, (newDisplay) => {
-    if (newDisplay === 'sm' || newDisplay === 'xs') {
+    setDisplayChanges();
+})
+
+
+
+const setDisplayChanges = () => {
+    if (display.name.value === 'sm' || display.name.value === 'xs') {
         showTabs.value = false;
         showToggleTabsBtn.value = true;
         showTabsAsFloat.value = true;
@@ -95,10 +95,14 @@ watch(display.name, (newDisplay) => {
         showToggleTabsBtn.value = false;  
         showTabsAsFloat.value = false;
     }
-})
+}
 
 const slagify = (text: string) => {
-    return text.toLowerCase().replace(/\s+/g, '-');
+    return text.toLowerCase()
+               .replace(/&\s+/g, '-')
+               .replace(/\s+/g, '-') 
+               .replace(/[^a-z0-9-]/g, '') 
+               .replace(/^-+|-+$/g, '');  
 }
 
 const calCols = computed( () => {
@@ -121,7 +125,6 @@ const calCols = computed( () => {
 
 
 function scrollToSection(index: number) {
-    console.log("scrolling to: " + index)
     if (sections.value && sections.value[index]) {
         const section = sections.value[index].$el as HTMLElement;
         if (section) {
@@ -139,26 +142,24 @@ const suspendObserver = ref(false)
 
 function handleTabChange(index: number, title: string) {
     const sectionId = slagify(tabs[index].title);
-    tab.value = index; // Update active tab directly
-    scrollToSection(index); // Perform the scroll
+    tab.value = index;
+    if (!ignoreNextHashChange.value)
+        scrollToSection(index); 
 
 
-    suspendObserver.value = true; // Suspend observer to prevent conflicts during hash change
+    suspendObserver.value = true;
 
     if (route.hash !== `#${sectionId}`) {
-        ignoreNextHashChange.value = true; // Set the flag
+        ignoreNextHashChange.value = true; 
         router.push({ hash: `#${sectionId}` })
             .catch((err) => {
-                // Catch navigation errors, e.g., if trying to push same hash repeatedly quickly
                 if (err.name !== 'NavigationDuplicated') {
                     console.error("Router push error:", err);
                 }
             })
             .finally(() => {
-                // Reset the flag after the router operation is complete
-                // Use a slight delay to ensure the watcher's next tick has passed
                 setTimeout(() => {
-                    ignoreNextHashChange.value = false; // Reset the flag
+                    ignoreNextHashChange.value = false;
                 }, 50);
             });
     }
@@ -168,92 +169,95 @@ function handleTabChange(index: number, title: string) {
 }
 
 const updateHashFromScroll = (sectionId: string) => {
+    // console.log(sectionId);
     if (lastIntersectingSectionId === sectionId) {
-        return; // Avoid redundant updates from Intersection Observer
+        return; 
     }
 
     const index = tabs.findIndex(t => slagify(t.title) === sectionId);
     if (index !== -1) {
         if (tab.value !== index) {
-            tab.value = index; // Update active tab
+            tab.value = index;
         }
 
-        // Set flag to tell the route.hash watcher to ignore this specific change.
-        ignoreNextHashChange.value = true; // Set the flag
-        // Update URL hash, using router.replace to avoid cluttering history
+        ignoreNextHashChange.value = true; 
         router.replace({ hash: `#${sectionId}` })
             .catch((err) => {
-                // Catch navigation errors
                 if (err.name !== 'NavigationDuplicated') {
                     console.error("Router replace error:", err);
                 }
             })
             .finally(() => {
-                // Reset the flag after the router operation is complete
                 setTimeout(() => {
-                    ignoreNextHashChange.value = false; // Reset the flag
+                    ignoreNextHashChange.value = false;
                 }, 500);
             });
 
-        lastIntersectingSectionId = sectionId; // Update last known intersecting section
+        lastIntersectingSectionId = sectionId;
     }
 };
 
 
 const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     // console.log('IntersectionObserver callback fired!');
-    // console.log('Entries:', entries); // See what entries are reported
+    if(suspendObserver.value) {
+        // console.groupEnd();
+        return;
+    }
 
-    if(suspendObserver.value)
-        return
+    let mostRelevantSectionId: string | null = null;
+    let minTop = Infinity; // To find the section whose top is highest in the viewport
 
-    let mostVisibleSectionId: string | null = null;
-    let maxRatio = 0;
+    entries.forEach(entry => {
+        // console.log(`  Entry: ID=${entry.target.id}, isIntersecting=${entry.isIntersecting}, intersectionRatio=${entry.intersectionRatio.toFixed(2)}`);
 
-    entries.forEach(entry =>{    
-        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            mostVisibleSectionId = entry.target.id;
-            maxRatio = entry.intersectionRatio;
+        if (entry.isIntersecting) {
+            const rect = entry.boundingClientRect;
+            if (rect.top < minTop) {
+                minTop = rect.top;
+                mostRelevantSectionId = entry.target.id;
+            }
         }
     });
 
-    if (mostVisibleSectionId && maxRatio > 0.5) {
-        updateHashFromScroll(mostVisibleSectionId);
+    // console.log(`  Decided section for this cycle: ${mostRelevantSectionId}`);
+
+    if (mostRelevantSectionId) {
+        // Check if the current hash is already this section, to avoid unnecessary updates
+        const currentHashId = window.location.hash.substring(1);
+        if (currentHashId !== mostRelevantSectionId) {
+            // console.log(`  Calling updateHashFromScroll with: ${mostRelevantSectionId}`);
+            updateHashFromScroll(mostRelevantSectionId);
+        } else {
+            // console.log(`  Hash already matches ${mostRelevantSectionId}.`);
+        }
+    } else {
+        // console.log(`  No section currently intersecting the central line.`);
     }
 }
 
 onMounted(() => {
+    setDisplayChanges(); // Set initial display state based on current screen size,
     nextTick(() => {
-        // Use `sections.value` as the ref for the Section components
-        const sectionElements = sections.value.map(comp => comp.$el as HTMLElement)
-
+        const sectionElements = sections.value ? sections.value.map(comp => comp.$el as HTMLElement) : []
         if (sectionElements.length > 0) {
-            // Corrected root element selector for Intersection Observer
-            // const contentAreaElement = document.querySelector('.content-area') as HTMLElement;
-            // if (contentAreaElement) {
+            
                 observer = new IntersectionObserver(handleIntersection, {
-                    root: null, // Observe within the scrollable content area
-                    rootMargin: '0px 0px -50% 0px', // When section crosses mid-point of viewport
-                    threshold: [0.1, 0.5, 0.9] // Observe at different visibility levels
+                    root: null, 
+                    rootMargin: '-49% 0px -49% 0px',
                 });
 
-                sectionElements.forEach(el => observer?.observe(el));
-            // } else {
-            //     console.warn("Could not find '.content-area' element for IntersectionObserver root.");
-            // }
+                sectionElements.forEach(el => {
+                    observer?.observe(el);
+                });
 
-
-            // Handle initial route hash (e.g., user directly navigated to /#tab-2)
             if (route.hash) {
                 const targetId = route.hash.substring(1);
                 const index = tabs.findIndex(t => slagify(t.title) === targetId)
                 if (index !== -1) {
                     tab.value = index;
-                    // The route.hash watcher (with immediate: true) will handle the scroll here.
-                    // No need for an additional setTimeout here.
                 }
             } else {
-                // If no hash, default to the first tab/section and scroll to top
                 tab.value = 0;
                 const contentArea = document.querySelector('.content-area');
                 if (contentArea) {
@@ -272,15 +276,9 @@ onBeforeUnmount(() => {
 
 
 watch(() => route.hash, (newHash, oldHash) => {
-    // IMPORTANT: This is the crucial check!
-    // If ignoreNextHashChange is true, it means we programmatically changed the hash.
-    // In this case, we prevent the watcher from reacting to avoid conflicts or redundant actions.
     if (ignoreNextHashChange.value) {
-        console.log('Hash changed from', oldHash, 'to', newHash, ' (IGNORED - programmatic change)');
-        // The flag will be reset after a short delay by the initiating function (handleTabChange or updateHashFromScroll).
         return;
     }
-    console.log('Hash changed from', oldHash, 'to', newHash, ' (NOT ignored)');
 
     if (newHash && newHash !== oldHash) {
         const targetId = newHash.substring(1);
@@ -290,8 +288,7 @@ watch(() => route.hash, (newHash, oldHash) => {
                 tab.value = index;
             }
             setTimeout(() => {
-                // Use sections.value as the ref for the Section components
-                const el = sections.value[index]?.$el as HTMLElement;
+                const el = sections.value && sections.value[index]?.$el as HTMLElement;
                 if (el) {
                     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
@@ -299,7 +296,6 @@ watch(() => route.hash, (newHash, oldHash) => {
         }
     }
     else if (!newHash && oldHash) {
-        // If hash is cleared (e.g., user navigated to root path)
         tab.value = 0;
         const contentArea = document.querySelector('.content-area');
         if (contentArea) {
@@ -307,7 +303,7 @@ watch(() => route.hash, (newHash, oldHash) => {
         }
 
     }
-}, { immediate: true }) // immediate: true will run the watcher on initial component load
+}, { immediate: true }) 
 
 
 
@@ -335,11 +331,11 @@ watch(() => route.hash, (newHash, oldHash) => {
     }
 
     .floatTabs {
-        position: fixed; /* Changed from fixed to absolute */
-        top: 100px; /* Add this line to position the tabs at the bottom */
-        left: 0; /* Add this line to align the tabs to the left */
-        right: 0; /* Add this line to stretch the tabs across the width */
-        z-index: 1000; /* Add this line to ensure the tabs are above other content */
+        position: fixed; 
+        top: 100px; 
+        left: 0; 
+        right: 0;
+        z-index: 1000;
         width: 25%
     }
 

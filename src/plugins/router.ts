@@ -11,20 +11,6 @@ const routes : RouteRecordRaw[] = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
-    scrollBehavior(to, from, savedPosition) {
-        if (to.hash) {
-          const el = document.querySelector(to.hash)
-          if (el) {
-            return { el, behavior: 'smooth', top: 0 }
-          }
-        }
-        else if (savedPosition) {
-          return savedPosition;
-        } else {
-            return { left: 0, top: 0 };
-        }
-          
-    },
   
 })
 

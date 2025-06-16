@@ -10,8 +10,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     Contact: typeof import('./src/components/Sections/Contact.vue')['default']
     Education: typeof import('./src/components/Sections/Education.vue')['default']
+    History: typeof import('./src/components/Sections/History.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
     Personal: typeof import('./src/components/Sections/Personal.vue')['default']
+    Projects: typeof import('./src/components/Sections/Projects.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Section: typeof import('./src/components/Section.vue')['default']

@@ -1,0 +1,38 @@
+[
+    {
+        "year_start": "Sep 2024", 
+        "year_end": "May 2022", 
+        "institution": { 
+            "full_name": "Netcompany Intrasoft", 
+            "name": "Netcompany", 
+            "location": "Greece", 
+            "info": "Netcompany Intrasoft", 
+            "img_path": "n.png",
+            "additional_info": { 
+                "inst_link": "https://en.uoa.gr/",
+                "dpt": { "name": "DIT", "link": "https://dpt.uoa.gr/" },
+                "info": "Department of Informatics and Telecommunications"
+            } 
+        }, 
+        "role": "Software Engineer", 
+        "info": ""
+    },
+    {
+        "year_start": "Apr 2022", 
+        "year_end": "Oct 2021", 
+        "institution": { 
+            "full_name": "Intrasoft International", 
+            "name": "Intrasoft International (Former)", 
+            "location": "Greece", 
+            "info": "Intrasoft International", 
+            "img_path": "intr_intrn.png",
+            "additional_info": { 
+                "inst_link": "", 
+                "dpt": { "name": "", "link": "" }, 
+                "info": "" 
+            } 
+        }, 
+        "role": "Software Engineer | Internship", 
+        "info": "B"
+    }
+]

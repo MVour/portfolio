@@ -1,0 +1,114 @@
+{
+    "groups": ["nodeJs", "kafka", "java"],
+    "projects_list":[
+
+        {
+            "title": "Project 1",
+            "description": "Description for Project 1",
+            "repo_url": "http://example.com/project1",
+            "live_url": "http://example.com/live_project1",
+            "tags": ["vueJs"]
+        },
+        {
+            "title": "Project 2",
+            "description": "Description for Project 2",
+            "repo_url": "http://example.com/project2",
+            "live_url": "http://example.com/live_project2",
+            "tags": ["javascript", "springBoot", "java"]
+        },
+        {
+            "title": "Project 3",
+            "description": "Description for Project 3",
+            "repo_url": "http://example.com/project3",
+            "live_url": "http://example.com/live_project3",
+            "tags": ["react", "nodeJs", "kafka"]
+        },
+        
+        {
+            "title": "Project 4",
+            "description": "Description for Project 4",
+            "repo_url": "http://example.com/project4",
+            "live_url": "http://example.com/live_project4",
+            "tags": ["python", "flask"]
+        },
+        {
+            "title": "Project 5",
+            "description": "Description for Project 5",
+            "repo_url": "http://example.com/project5",
+            "live_url": "http://example.com/live_project5",
+            "tags": ["django", "html", "css", "nodeJs"]
+        },
+        {
+            "title": "Project 6",
+            "description": "Description for Project 6",
+            "repo_url": "http://example.com/project6",
+            "live_url": "http://example.com/live_project6",
+            "tags": ["ruby", "rails"]
+        },
+        {
+            "title": "Project 7",
+            "description": "Description for Project 7",
+            "repo_url": "http://example.com/project7",
+            "live_url": "http://example.com/live_project7",
+            "tags": ["go", "microservices"]
+        },
+        {
+            "title": "Project 8",
+            "description": "Description for Project 8",
+            "repo_url": "http://example.com/project8",
+            "live_url": "http://example.com/live_project8",
+            "tags": ["typescript", "nodeJs"]
+        },
+        {
+            "title": "Project 9",
+            "description": "Description for Project 9",
+            "repo_url": "http://example.com/project9",
+            "live_url": "http://example.com/live_project9",
+            "tags": ["graphql", "apollo"]
+        },
+        {
+            "title": "Project 10",
+            "description": "Description for Project 10",
+            "repo_url": "http://example.com/project10",
+            "live_url": "http://example.com/live_project10",
+            "tags": ["flutter", "dart"]
+        },
+        {
+            "title": "Project 11",
+            "description": "Description for Project 11",
+            "repo_url": "http://example.com/project11",
+            "live_url": "http://example.com/live_project11",
+            "tags": ["kotlin", "android", "java"]
+        },
+        {
+            "title": "Project 12",
+            "description": "Description for Project 12",
+            "repo_url": "http://example.com/project12",
+            "live_url": "http://example.com/live_project12",
+            "tags": ["swift", "ios", "kafka"]
+        },
+        {
+            "title": "Project 13",
+            "description": "Description for Project 13",
+            "repo_url": "http://example.com/project13",
+            "live_url": "http://example.com/live_project13",
+            "tags": ["php", "laravel", "nodeJs"]
+        },
+        {
+            "title": "Project 14",
+            "description": "Description for Project 14",
+            "repo_url": "http://example.com/project14",
+            "live_url": "http://example.com/live_project14",
+            "tags": ["csharp", "dotnet", "java"]
+        },
+        {
+            "title": "Project 15",
+            "description": "Description for Project 15",
+            "repo_url": "http://example.com/project15",
+            "live_url": "http://example.com/live_project15",
+            "tags": ["rust", "webAssembly", "kafka", "java", "nodeJs"]
+        }
+        
+        
+    ]
+}

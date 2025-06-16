@@ -5,29 +5,38 @@
         <v-card-title>{{ title }} </v-card-title>
         <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
         <v-card-text style="display: flex;flex-flow: column;">
-            <v-slide-group>
+            <template v-for="pr_grp in projectsInfo.groups">
 
-                <v-card :color="theme.current.value.colors.surface" variant="flat" v-for="project in content.projects" :key="project.name" style="min-width:250px;margin:10px;min-height: 300px;">
-                    
-                    <v-card-title>{{ project.name }}</v-card-title>
-                    <v-card-subtitle>{{ project.descr }}</v-card-subtitle>
-                    <v-card-text>
-                        <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                            {{ tag }}
-                        </v-chip>
-                    </v-card-text>
-                </v-card>
-            </v-slide-group>
-
-            <!-- <v-timeline>
-
-                <v-timeline-item v-for="(item, index) in content.projects" :key="index">
-                    <v-card>
-                        <v-card-title>{{ item.name }}</v-card-title>
-                        <v-card-subtitle>{{ item.descr }}</v-card-subtitle>
+                <v-card-title>{{ pr_grp }}</v-card-title>
+                <v-slide-group>
+                    <v-card width="230" :color="theme.current.value.colors.surface" variant="flat" v-for="project in filterProjects(pr_grp)" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
+                        
+                        <v-card-title>{{ project.title }}</v-card-title>
+                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
+                        <v-card-text>
+                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
+                                {{ tag }}
+                            </v-chip>
+                        </v-card-text>
                     </v-card>
-                </v-timeline-item>
-            </v-timeline> -->
+                </v-slide-group>
+            </template>
+            <template v-if="remainingProjects.length">
+                <v-card-title>Remaining Projects</v-card-title>
+                <v-slide-group >
+                    
+                    <v-card width="230"  :color="theme.current.value.colors.surface" variant="flat" v-for="project in remainingProjects" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
+                        <v-card-title>{{ project.title }}</v-card-title>
+                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
+                        <v-card-text>
+                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
+                                {{ tag }}
+                            </v-chip>
+                        </v-card-text>
+                    </v-card>
+                </v-slide-group>
+
+            </template>
         </v-card-text>
     </v-card>
 
@@ -35,6 +44,9 @@
 
 <script setup lang="ts">
 import { useTheme } from 'vuetify/lib/composables/theme';
+import projectsInfo from '@/data/projects.json';
+import stack from '@/data/stack.json';
+import { computed } from 'vue';
 
 const theme = useTheme(); 
 
@@ -82,5 +94,17 @@ function getContent() {
 }
 
 
+function filterProjects(pr_grp: string) {
+    return projectsInfo.projects_list.filter(project => project.tags.includes(pr_grp));
+}
+
+
+const remainingProjects = computed(() => {
+    //project tags do not include any value from projectsInfo.groups
+
+    return projectsInfo.projects_list.filter(project => 
+        !project.tags.some(tag => projectsInfo.groups.includes(tag))
+    );
+});
 
 </script>

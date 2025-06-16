@@ -8,7 +8,6 @@
     >
 
         <v-card-title>{{ title }} </v-card-title>
-        <!-- <v-card-subtitle>{{ personalInfo. }}</v-card-subtitle> -->
         <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
             {{ personalInfo.info }}
             <v-divider class="ma-2"></v-divider>

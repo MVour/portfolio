@@ -8,8 +8,7 @@
     :color="theme.current.value.colors.background" 
   >
     <div class="cube-container">
-      <div
-        v-for="cube in cubes"
+      <div v-for="cube in cubes"
         :key="cube.id"
         @mouseenter="cube.isHovered=true"
         @mouseleave="cube.isHovered=false"
@@ -21,10 +20,10 @@
 
     <v-card-text 
       class="text-h3 d-flex flex-row align-center justify-center"
-      style="z-index: 0; position: relative; text-align: center;"
+      style="z-index: 0; position: relative; text-align: center;flex-wrap: wrap;"
     >
       <v-avatar size="200" icon="mdi-account" />
-      <div class="ml-6 text-left">
+      <div class="ml-6 text-left" style="display:flex; flex-direction: column;">
         <div class="display-1">{{ name_first }}</div>
         <div class="display-1">{{ name_last }}</div>
     </div>
