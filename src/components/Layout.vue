@@ -51,6 +51,7 @@ import Contact from './Sections/Contact.vue'
 import History from './Sections/History.vue'
 import Projects from './Sections/Projects.vue'
 import Stack from './Sections/Stack.vue' 
+import CertsPubs from './Sections/CertsPubs.vue'
 import { ref, watch, onMounted, nextTick, onBeforeUnmount, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTheme, useDisplay } from 'vuetify'
@@ -76,7 +77,7 @@ const tabs = [
     { text: 'History', title: 'Education & Work History', component: History  },
     { text: 'Projects', title: 'Projects', component: Projects  },
     { text: 'Skills', title: 'Skills', component: Stack  },
-    //   { text: 'Certifications', title: 'Certifications', component: Section  },
+    { text: 'Publications & Certifications', title: 'Publications & Certifications', component: CertsPubs  },
 ]
 
 

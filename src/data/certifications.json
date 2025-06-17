@@ -1,0 +1,22 @@
+[
+
+    {
+        "name": "Certification Name",
+        "issuedBy": "Issuing Organization",
+        "dateIssued": "YYYY-MM-DD",
+        "validUntil": "YYYY-MM-DD"
+    },
+    {
+
+        "name": "Certification Name 1",
+        "issuedBy": "Issuing Organization",
+        "dateIssued": "YYYY-MM-DD",
+        "validUntil": "YYYY-MM-DD"
+    },
+    {
+        "name": "Certification Name 3",
+        "issuedBy": "Issuing Organization",
+        "dateIssued": "YYYY-MM-DD",
+        "validUntil": "YYYY-MM-DD"
+    }
+]
