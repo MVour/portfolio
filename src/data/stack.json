@@ -1,44 +1,124 @@
 {
-    "technologies": [
+    "programming_languages": [
         {
-            "tech": "nodeJs",
-            "img": "",  
-            "description": "JavaScript runtime built on Chrome's V8 JavaScript engine"
+            "name": "JavaScript",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            "description": "A high-level, dynamic, untyped, and interpreted programming language.",
+            "comments": "",
+            "rate": 3
         },
         {
-            "tech": "kafka",
-            "img": "",  
-            "description": "A distributed event streaming platform"
+            "name": "Python",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "description": "A high-level programming language known for its readability and versatility.",
+            "comments": "",
+            "rate": 4
         },
         {
-            "tech": "java",
-            "img": "",
-            "description": "A high-level, class-based, object-oriented programming language"
+            "name": "Java",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+            "description": "A high-level, class-based, object-oriented programming language.",
+            "comments": "",
+            "rate": 5
         },
         {
-            "tech": "python",
-            "img": "",
-            "description": "A high-level programming language known for its readability and versatility"
+            "name": "Node.js",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
+            "comments": "",
+            "rate": 5
         },
         {
-            "tech": "nodeJs",
-            "img": "",
-            "description": "JavaScript runtime built on Chrome's V8 JavaScript engine"
+            "name": "Python",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "description": "A high-level programming language known for its readability and versatility.",
+            "comments": "",
+            "rate": 4
         },
         {
-            "tech": "kafka",
-            "img": "",
-            "description": "A distributed event streaming platform"
+            "name": "Java",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+            "description": "A high-level, class-based, object-oriented programming language.",
+            "comments": "",
+            "rate": 5
         },
         {
-            "tech": "java",
-            "img": "",
-            "description": "A high-level, class-based, object-oriented programming language"
+            "name": "Node.js",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
+            "comments": "",
+            "rate": 5
+        }
+    ],
+    "databases": [
+        {
+            "name": "MongoDB",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+            "description": "A NoSQL database program that uses JSON-like documents with optional schemas.",
+            "comments": "",
+            "rate": 5
+            
         },
         {
-            "tech": "python",
-            "img": "",
-            "description": "A high-level programming language known for its readability and versatility"    
+            "name": "MySQL",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+            "description": "An open-source relational database management system.",
+            "comments": "",
+            "rate": 5
+        },
+        {
+            "name": "PostgreSQL",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+            "description": "A powerful, open source object-relational database system.",
+            "comments": "",
+            "rate": 5
+        }
+    ],
+    "frameworks": [
+        {
+            "name": "React",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            "description": "A JavaScript library for building user interfaces.",
+
+            "comments": "",
+            "rate": 5
+        },
+        {
+            "name": "Vue.js",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+            "description": "A progressive framework for building user interfaces.",
+            "comments": "",
+            "rate": 5
+        },
+        {
+            "name": "Angular",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+            "description": "A platform for building mobile and desktop web applications.",
+            "comments": "",
+            "rate": 5
+        }
+    ],
+    "tools": [
+        {
+            "name": "Git",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+            "description": "A distributed version control system for tracking changes in source code.",
+            "comments": "",
+            "rate": 5
+        },
+        {
+            "name": "Docker",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+            "description": "A platform for developing, shipping, and running applications in containers.",
+            "comments": "",
+            "rate": 5
+        },
+        {
+            "name": "Kubernetes",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+            "description": "An open-source system for automating the deployment, scaling, and management of containerized applications.",
+            "comments": "",
+            "rate": 5
         }
     ]
 }

@@ -9,7 +9,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Contact: typeof import('./src/components/Sections/Contact.vue')['default']
-    Education: typeof import('./src/components/Sections/Education.vue')['default']
     History: typeof import('./src/components/Sections/History.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
     Personal: typeof import('./src/components/Sections/Personal.vue')['default']
@@ -17,6 +16,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Section: typeof import('./src/components/Section.vue')['default']
+    Stack: typeof import('./src/components/Sections/Stack.vue')['default']
     Welcome: typeof import('./src/components/Welcome.vue')['default']
   }
 }

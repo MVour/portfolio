@@ -7,9 +7,9 @@
         <v-card-text style="display: flex;flex-flow: column;">
             <template v-for="pr_grp in projectsInfo.groups">
 
-                <v-card-title>{{ pr_grp }}</v-card-title>
-                <v-slide-group>
-                    <v-card width="230" :color="theme.current.value.colors.surface" variant="flat" v-for="project in filterProjects(pr_grp)" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
+                <v-card-title class="text-uppercase">{{ pr_grp }}</v-card-title>
+                <v-slide-group show-arrows="always">
+                    <v-card width="200" height="250" :color="theme.current.value.colors.surface" variant="flat" v-for="project in filterProjects(pr_grp)" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
                         
                         <v-card-title>{{ project.title }}</v-card-title>
                         <v-card-subtitle>{{ project.description }}</v-card-subtitle>
@@ -22,8 +22,8 @@
                 </v-slide-group>
             </template>
             <template v-if="remainingProjects.length">
-                <v-card-title>Remaining Projects</v-card-title>
-                <v-slide-group >
+                <v-card-title class="text-uppercase">Remaining Projects</v-card-title>
+                <v-slide-group show-arrows="always">
                     
                     <v-card width="230"  :color="theme.current.value.colors.surface" variant="flat" v-for="project in remainingProjects" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
                         <v-card-title>{{ project.title }}</v-card-title>
