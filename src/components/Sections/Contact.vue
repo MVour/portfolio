@@ -6,8 +6,15 @@
         :color="theme.current.value.colors.primary" 
         variant="text"
     >
-    
-        <v-card-title>{{ title }} </v-card-title>
+        <template v-slot:prepend>
+
+                <v-avatar size="48">
+                    <v-icon size="34">{{ icon }}</v-icon>
+                </v-avatar>
+        </template>
+        <template v-slot:title>
+                {{ title }}
+        </template>
         <v-card-subtitle> Contact me</v-card-subtitle>
         <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
 
@@ -66,7 +73,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 

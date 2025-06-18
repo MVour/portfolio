@@ -2,7 +2,15 @@
 
     <v-card :id="sectionId" style="margin:50px auto  50px auto;padding:20px" height="auto" :color="theme.current.value.colors.primary" variant="text">
 
-        <v-card-title>{{ title }} </v-card-title>
+        <template v-slot:prepend>
+
+            <v-avatar size="48">
+                <v-icon size="34">{{ icon }}</v-icon>
+            </v-avatar>
+        </template>
+        <template v-slot:title>
+            {{ title }}
+        </template>
         <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
         <v-card-text style="display: flex;flex-flow: column;">
             <template v-for="pr_grp in projectsInfo.groups">
@@ -41,7 +49,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 

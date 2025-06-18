@@ -1,8 +1,15 @@
 <template>
 
     <v-card :id="sectionId" style="margin:50px auto  50px auto;padding:20px" height="auto" :color="theme.current.value.colors.primary" variant="text">
+        <template v-slot:prepend>
 
-        <v-card-title>{{ title }} </v-card-title>
+            <v-avatar size="48">
+                <v-icon size="34">{{ icon }}</v-icon>
+            </v-avatar>
+        </template>
+        <template v-slot:title>
+            {{ title }}
+        </template>
         <v-card-text style="display: flex;flex-flow: column;">
             <v-row>
                 <v-col cols="6" >
@@ -61,7 +68,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 

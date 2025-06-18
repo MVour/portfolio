@@ -25,9 +25,10 @@
                             :value="tab.text"
                             :color="theme.current.value.colors.secondary"
                             base-color="transparent"
+                            :prepend-icon="tab.icon"
                             @click="handleTabChange(index, tab.title)"
-                        >
-                            {{ tab.title }}
+                    >
+                          {{ tab.title }}
                         </v-tab>
                     </v-tabs> 
                 </div>
@@ -38,6 +39,7 @@
                 :value="tab.title"
                 :title="tab.title"
                 :section-id="slagify(tab.title)" style="overflow:visible;"
+                :icon="tab.icon"
                 />
             </v-col>
         </v-row>
@@ -71,13 +73,12 @@ const sections = ref<InstanceType<typeof Section | typeof Personal | typeof Cont
     
 
 const tabs = [
-    { text: 'Personal Info', title: 'Personal Info', component: Personal },
-    { text: 'Contact', title: 'Contact', component: Contact  },
-    // { text: 'Publications', title: 'Publications', component: Section  },
-    { text: 'History', title: 'Education & Work History', component: History  },
-    { text: 'Projects', title: 'Projects', component: Projects  },
-    { text: 'Skills', title: 'Skills', component: Stack  },
-    { text: 'Publications & Certifications', title: 'Publications & Certifications', component: CertsPubs  },
+    { icon: "mdi-tooltip-account", text: 'Personal Info', title: 'Personal Info', component: Personal },
+    { icon: "mdi-phone", text: 'Contact', title: 'Contact', component: Contact  },
+    { icon: "mdi-book-open", text: 'History', title: 'Education & Work History', component: History  },
+    { icon: "mdi-folder", text: 'Projects', title: 'Projects', component: Projects  },
+    { icon: "mdi-briefcase", text: 'Skills', title: 'Skills', component: Stack  },
+    { icon: "mdi-file-document", text: 'Publications & Certifications', title: 'Publications & Certifications', component: CertsPubs  },
 ]
 
 

@@ -6,7 +6,15 @@
         variant="text"
         :color="theme.current.value.colors.primary" 
     >
-        <v-card-title>{{ title }} </v-card-title>
+        <template v-slot:prepend>
+
+                <v-avatar size="48">
+                    <v-icon size="34">{{ icon }}</v-icon>
+                </v-avatar>
+        </template>
+        <template v-slot:title>
+                {{ title }}
+        </template>
         <v-card-subtitle> Education History</v-card-subtitle>
         <v-card-text>
             <v-row  class="pa-5" style="justify-content: space-between;">
@@ -32,7 +40,11 @@
                                 <v-img :src="getImage(edu.institution.img_path)" />
                             </v-avatar>
                         </template>
-                        <v-card style="min-width:300px;width:auto;max-width: 100%;" variant="elevated" class=" pa-4 elevation-5">
+                        <v-card style="overflow: visible;min-width:300px;width:auto;max-width: 100%;" variant="elevated" class=" pa-4 elevation-5">
+                            <v-icon size="40"  style="position:absolute; top:-20px;left:5%;" 
+                                :icon="edu.degree ? 'mdi-school-outline' : 'mdi-domain'">
+                            </v-icon>
+                            
                             <v-card-title>{{ edu.degree || edu.role }}</v-card-title>
                             <v-card-subtitle>{{ edu.institution.name }}</v-card-subtitle>
                             <v-card-text>{{ edu.institution.info }}, {{ edu.institution.location }} </v-card-text>
@@ -140,7 +152,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 
