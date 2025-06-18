@@ -13,6 +13,7 @@ declare module 'vue' {
     History: typeof import('./src/components/Sections/History.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
     Personal: typeof import('./src/components/Sections/Personal.vue')['default']
+    ProjectCard: typeof import('./src/components/Sections/ProjectCard.vue')['default']
     Projects: typeof import('./src/components/Sections/Projects.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

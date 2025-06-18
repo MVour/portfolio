@@ -9,31 +9,19 @@
 
                 <v-card-title class="text-uppercase">{{ pr_grp }}</v-card-title>
                 <v-slide-group show-arrows="always">
-                    <v-card width="200" height="250" :color="theme.current.value.colors.surface" variant="flat" v-for="project in filterProjects(pr_grp)" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
-                        
-                        <v-card-title>{{ project.title }}</v-card-title>
-                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
-                        <v-card-text>
-                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                                {{ tag }}
-                            </v-chip>
-                        </v-card-text>
-                    </v-card>
+                    <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
                 </v-slide-group>
             </template>
             <template v-if="remainingProjects.length">
                 <v-card-title class="text-uppercase">Remaining Projects</v-card-title>
                 <v-slide-group show-arrows="always">
                     
-                    <v-card width="230"  :color="theme.current.value.colors.surface" variant="flat" v-for="project in remainingProjects" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
-                        <v-card-title>{{ project.title }}</v-card-title>
-                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
-                        <v-card-text>
-                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                                {{ tag }}
-                            </v-chip>
-                        </v-card-text>
-                    </v-card>
+                    <ProjectCard 
+                        v-for="project in remainingProjects" 
+                        :key="project.title" 
+                        :project="project" 
+                    />
+                    
                 </v-slide-group>
 
             </template>
@@ -45,6 +33,7 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify/lib/composables/theme';
 import projectsInfo from '@/data/projects.json';
+import ProjectCard from './ProjectCard.vue';
 import stack from '@/data/stack.json';
 import { computed } from 'vue';
 
