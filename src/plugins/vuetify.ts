@@ -11,6 +11,7 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+import colors from 'vuetify/util/colors'
 
 
 
@@ -35,7 +36,7 @@ const darkTheme = {
     background: '#121212',
     surface: '#1E1E1E',
     primary: '#E0E0E0',   
-    secondary: 'indigo-lighten-1', // Confirmed: Vuetify will resolve this to the correct color
+    secondary: colors.indigo.darken1, // Updated to use Vuetify color utility
     accent: '#FF4081',
     error: '#CF6679',
     info: '#2199F3', // Corrected a typo here from original, assuming you meant standard info color

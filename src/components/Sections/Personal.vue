@@ -1,11 +1,12 @@
 <template>
 
     <v-card :id="sectionId"  
-        style="margin:50px auto  50px auto;padding:20px" 
+        style="justify-self: start;margin:50px auto  50px auto;padding:20px" 
         height="auto" 
         :color="theme.current.value.colors.primary" 
         variant="text"
-    >
+        >
+        <!-- width="50%" -->
         <template v-slot:prepend>
 
                 <v-avatar size="48">
@@ -15,7 +16,7 @@
         <template v-slot:title>
                 {{ title }}
         </template>
-        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
+        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;width:50%;flex-flow: column;">
             {{ personalInfo.info }}
             <v-divider class="ma-2"></v-divider>
             <div>{{ personalInfo.job_title }}</div>

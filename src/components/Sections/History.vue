@@ -21,7 +21,7 @@
                 <v-col >
                 <v-chip-group style="justify-self: right;" class="mb-4" column v-model="toggleTimeline" multiple mandatory>
                         <v-chip  v-for="item in ['Education', 'Work']" :key="item" :value="item" variant="elevated"
-                        :color="theme.current.value.colors.primary"
+                        :color="theme.current.value.colors.secondary"
                         text-color="white"
                         @click=""
                         >
@@ -226,25 +226,7 @@ function clearSelection() {
 }
 
 
-const tabs = [
-  { title: 'Tab 1', content: 'Content for Tab 1' },
-  { title: 'Tab 2', content: 'Content for Tab 2' },
-  { title: 'Tab 3', content: 'Content for Tab 3' },
-  { title: 'Tab 4', content: 'Content for Tab 4' },
-  { title: 'Tab 5', content: 'Content for Tab 5' },
-  { title: 'Tab 6', content: 'Content for Tab 6' },
-  { title: 'Tab 7', content: 'Content for Tab 7' },
-  { title: 'Tab 8', content: 'Content for Tab 8' },
-  { title: 'Tab 9', content: 'Content for Tab 9' },
-  { title: 'Tab 10', content: 'Content for Tab 10' },
-  { title: 'Tab 11', content: 'Content for Tab 11' },
-];
 
-
-function getContent() {
-    const tab = tabs.find(t => t.title === props.title);
-    return tab ? tab.content : 'NOPE';
-}
 
 function getImage(imgPath: string): string {
     try {

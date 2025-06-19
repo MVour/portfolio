@@ -33,7 +33,8 @@
                 </v-tabs> 
             </div>
         </v-col>
-        <v-col :cols="calCols[1]">
+        <!-- style="justify-content: center;align-items: center;display:flex;flex-direction: column;" -->
+        <v-col :cols="calCols[1]" >
             <component v-for="tab in tabs" :key="tab.text" :is="tab.component"
             ref="sections" 
             :value="tab.title"
