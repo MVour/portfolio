@@ -8,7 +8,8 @@
             "description": "Ecosystem is a C++ simulation of a virtual ecological environment, where multiple species interact under configurable environmental rules. Agents (plants, herbivores, carnivores) employ object-oriented design with polymorphism, leverage spatial grids, and run in discrete time steps. Core features include resource competition, predator–prey dynamics, reproduction, and death—all visualized via ASCII or plotting libraries. ",
             "repo_url": "https://github.com/MVour/Ecosystem",
             "live_url": null,
-            "tags": ["C++", "OOP", "Simulation"]
+            "tags": ["C++", "OOP", "Simulation"],
+            "icon": "mdi-tree-outline"
         },
         {
             "title": "Disease Aggregator",
@@ -16,7 +17,8 @@
             "description_short": "A multithreaded client-server system in C for distributed parsing and querying of disease statistics using sockets, pipes, and custom in-memory data structures.",
             "repo_url": "https://github.com/MVour/DiseaseAggregator",
             "live_url": null,
-            "tags": ["C", "Multithreading", "sockets", "Client-Server"]
+            "tags": ["C", "Multithreading", "sockets", "Client-Server"],
+            "icon": "mdi-doctor"
         },
         {
             "title": "Linux Filesystem",
@@ -24,7 +26,8 @@
             "description_short": "A custom Linux filesystem written in C, modeling inode, block, and directory structures through low-level VFS-like interfaces.",
             "repo_url": "https://github.com/MVour/linux_filesystem",
             "live_url": null,
-            "tags": ["C", "Linux Kernel", "Linux", "Data Structures", "VFS", "Systems"]
+            "tags": ["C", "Linux Kernel", "Linux", "Data Structures", "VFS", "Systems"],
+            "icon": "mdi-linux"
         },
         
         {
@@ -33,7 +36,8 @@
             "description_short": "This portofolio!",
             "repo_url": "https://github.com/MVour/portofolio",
             "live_url": null,
-            "tags": ["Vue.js", "Node.js"]
+            "tags": ["Vue.js", "Node.js"],
+            "icon": "mdi-card-account-details-outline" 
         },
         
         {
@@ -42,7 +46,8 @@
             "description_short": "A classic snake game made in Godot Game Engine!",
             "repo_url": "https://github.com/MVour/snake_game",
             "live_url": "https://mvour-bz.github.io/snake_game",
-            "tags": ["Godot", "GDScript", "Arcade"]
+            "tags": ["Godot", "GDScript", "Arcade"],
+            "icon": "mdi-snake"
         },
 
         {
@@ -51,7 +56,8 @@
             "description_short": "End-to-end drone control system with C-based flight controller firmware and a Python-powered ground control UI using LoRa, Wi-Fi, and Bluetooth.",
             "repo_url": "https://github.com/MVour-bz/drone",
             "live_url": null,
-            "tags": ["Drone", "C", "Python", "Embedded Systems", "Control Systems"]
+            "tags": ["Drone", "C", "Python", "Embedded Systems", "Control Systems"],
+            "icon": "mdi-quadcopter"
         },
         {
             "title": "Board Game 2D",
@@ -59,7 +65,8 @@
             "description_short": "A custom implementation of the 2D board game Shadow Hunters.",
             "repo_url": "https://github.com/MVour-bz/board2D",
             "live_url": null,
-            "tags": ["Godot", "GDScript", "Multiplayer"]
+            "tags": ["Godot", "GDScript", "Multiplayer"],
+            "icon": "mdi-gamepad-variant"
         },
         {
             "title": "FaceIn",
@@ -67,7 +74,9 @@
             "description_short": "A demo full‑stack web application mimicing LinkedIn, illustrating key modern web technologies and architectural patterns.",
             "repo_url": "https://github.com/rania-v/web-application-technologies",
             "live_url": null,
-            "tags": [ "Vue.js", "Node.js", "Docker", "MongoDB", "express", "Full-Stack", "frontend", "backend", "Database"]
+            "tags": [ "Vue.js", "Node.js", "Docker", "MongoDB", "express", "Full-Stack", "frontend", "backend", "Database"],
+
+            "icon": "mdi-face-recognition"
         },
         {
             "title": "Big Data Entity Resolution",
@@ -75,7 +84,9 @@
             "description_short": "Efficient entity linking system clustering related product specs using C, text features, and logistic regression.",
             "repo_url": "https://github.com/meryfanou/BigDataEntityResolution",
             "live_url": null,
-            "tags": ["C", "Multithreading", "ML", "Text Analytics", "Logistic Regression", "TF-IDF", "BoW"]
+            "tags": ["C", "Multithreading", "ML", "Text Analytics", "Logistic Regression", "TF-IDF", "BoW"],
+
+            "icon": "mdi-multicast"
         }
     ]
 }

@@ -24,7 +24,7 @@
                             >
                                 <v-card class="mx-auto pt-3" flat border>  
                                     <v-img
-                                        :src="item.img"
+                                        :src="item.img ? item.img : getImage(item.img_path)"
                                         :alt="`Image for ${item.name}`"
                                         width="50%"
                                         contain
@@ -61,7 +61,7 @@
                             >
                                 <v-card class="mx-auto" flat border>
                                     <v-img
-                                        :src="item.img"
+                                        :src="item.img? item.img : getImage(item.img_path)"
                                         :alt="`Image for ${item.name}`"
                                         
                                         class="align-self-center"
@@ -99,7 +99,8 @@ import stackInfo from '@/data/stack.json'
 type StackInfoInterface = {
   [key: string]: {
     name: string;
-    img: string;
+    img: string | null;
+    img_path: string | null | undefined;
     description: string;
     comments: string;
     rate: number;
@@ -133,6 +134,17 @@ const rightColumnCategories = computed(() => {
   const half = Math.ceil(allCategories.value.length / 2); // Calculate roughly half
   return allCategories.value.slice(half); // Second half of categories
 });
+
+
+
+function getImage(imgPath: string | null | undefined): string {
+    try {
+        return new URL(`../../assets/${imgPath}`, import.meta.url).href
+    } catch (error) {
+        console.error('Error loading image:', error);
+        return '';
+    }
+}
 
 
 

@@ -1,8 +1,9 @@
 {
-    "programming_languages": [
+    "Programming Languages": [
         {
             "name": "JavaScript",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            "img_path": null,
             "description": "A high-level, dynamic, untyped, and interpreted programming language.",
             "comments": "",
             "rate": 3
@@ -10,6 +11,7 @@
         {
             "name": "Python",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "img_path": null,
             "description": "A high-level programming language known for its readability and versatility.",
             "comments": "",
             "rate": 4
@@ -17,6 +19,7 @@
         {
             "name": "Java",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+            "img_path": null,
             "description": "A high-level, class-based, object-oriented programming language.",
             "comments": "",
             "rate": 5
@@ -24,36 +27,33 @@
         {
             "name": "Node.js",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            "img_path": null,
             "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
             "comments": "",
             "rate": 5
         },
         {
-            "name": "Python",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-            "description": "A high-level programming language known for its readability and versatility.",
+            "name": "C",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+            "img_path": null,
+            "description": "A general-purpose programming language that is extremely popular, efficient, and flexible.",
             "comments": "",
-            "rate": 4
+            "rate": 3
         },
         {
-            "name": "Java",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-            "description": "A high-level, class-based, object-oriented programming language.",
+            "name": "C++",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+            "img_path": null,
+            "description": "A general-purpose programming language created as an extension of the C programming language.",
             "comments": "",
-            "rate": 5
-        },
-        {
-            "name": "Node.js",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
-            "comments": "",
-            "rate": 5
+            "rate": 3
         }
     ],
-    "databases": [
+    "Databases": [
         {
             "name": "MongoDB",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+            "img_path": null,
             "description": "A NoSQL database program that uses JSON-like documents with optional schemas.",
             "comments": "",
             "rate": 5
@@ -62,6 +62,7 @@
         {
             "name": "MySQL",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+            "img_path": null,
             "description": "An open-source relational database management system.",
             "comments": "",
             "rate": 5
@@ -69,39 +70,77 @@
         {
             "name": "PostgreSQL",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+            "img_path": null,
             "description": "A powerful, open source object-relational database system.",
-            "comments": "",
-            "rate": 5
-        }
-    ],
-    "frameworks": [
-        {
-            "name": "React",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            "description": "A JavaScript library for building user interfaces.",
-
             "comments": "",
             "rate": 5
         },
         {
+            "name": "Redis",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+            "img_path": null,
+            "description": "An open-source, in-memory data structure store, used as a database, cache, and message broker.",
+            "comments": "",
+            "rate": 4
+        },
+        {
+            "name": "RabbitMq",
+            "img" : "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg",
+            "img_path": null,
+            "description": "",
+            "comments": "",
+            "rate": 3
+        }
+    ],
+    "Frameworks": [
+        {
             "name": "Vue.js",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+            "img_path": null,
             "description": "A progressive framework for building user interfaces.",
             "comments": "",
             "rate": 5
         },
         {
-            "name": "Angular",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
-            "description": "A platform for building mobile and desktop web applications.",
+            "name": "Spring",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+            "img_path": null,
+            "description": "A powerful framework for building Java applications.",
             "comments": "",
-            "rate": 5
+            "rate": 4
+
+        },
+        {
+
+            "name": "Quarkus",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/quarkus/quarkus-original.svg",
+            "img_path": null,
+            "description": "A Kubernetes-native Java stack tailored for GraalVM.",
+            "comments": "A modern framework for building cloud-native applications.",
+            "rate": 4
+        },
+        {
+            "name": "Flask",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+            "img_path": null,
+            "description": "A lightweight WSGI web application framework in Python.",
+            "comments": "A microframework for Python based on Werkzeug and Jinja2.",
+            "rate": 4
+        },
+        {
+            "name": "FastApi",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+            "img_path": null,
+            "description": "A modern web framework for building APIs with Python 3.6+ based on standard Python type hints.",
+            "comments": "A lightweight framework for building web applications and APIs.",
+            "rate": 4
         }
     ],
-    "tools": [
+    "Tools": [ 
         {
             "name": "Git",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+            "img_path": null,
             "description": "A distributed version control system for tracking changes in source code.",
             "comments": "",
             "rate": 5
@@ -109,16 +148,68 @@
         {
             "name": "Docker",
             "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+            "img_path": null,
             "description": "A platform for developing, shipping, and running applications in containers.",
             "comments": "",
             "rate": 5
         },
         {
-            "name": "Kubernetes",
-            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
-            "description": "An open-source system for automating the deployment, scaling, and management of containerized applications.",
+            "name": "Apache kafka",
+            "img" : null,
+            "img_path": "kafka.png",
+            "description" : "A distributed streaming platform for building real-time data pipelines and streaming applications.",
+            "rate": 4
+
+        },
+        {
+            "name": "airflow",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg",
+            "description": "A platform to programmatically author, schedule, and monitor workflows.",
+            "img_path": null,
+            "comments": "",
+            "rate": 4
+        },
+        {
+            "name": "ELK stack",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
+            "img_path": null,
+            "description": "A set of tools for searching, analyzing, and visualizing log data in real time.",
+            "comments": "",
+            "rate": 4
+        },
+        {
+            "name": "apisix",
+            "img": null,
+            "img_path": "apisix.png",
+            "description": "A dynamic, real-time, high-performance API gateway.",
+            "comments": "A powerful tool for managing APIs.",
+            "rate": 4
+        },
+        {
+
+            "name": "Jenkins",
+            "img": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+            "img_path": null,
+            "description": "An open-source automation server for continuous integration and continuous delivery.",
             "comments": "",
             "rate": 5
+        },
+        {
+            "name": "Harbor",
+            "img": null,
+            "img_path": "harbor.png",
+            "description": "A cloud-native registry that stores, signs, and scans content.",
+            "comments": "",
+            "rate": 4
+        },
+        {
+            "name": "Keycloak",
+            "img": null,
+            "img_path": "keycloak.png",
+            "description": "An open-source identity and access management solution.",
+            "comments": "",
+            "rate": 4
         }
+
     ]
 }

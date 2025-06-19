@@ -27,12 +27,12 @@
                         <v-card-text>{{ pub.doi }}</v-card-text>
                         
                         <v-card-actions>
-                            <v-btn :href="pub.link" target="_blank">View</v-btn>
+                            <v-btn append-icon="mdi-open-in-new" :href="pub.link" target="_blank">View</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
                 
-                <v-col cols="6"  >
+                <v-col cols="6" v-if="certifications.length > 0"  >
                     <v-card-subtitle>Certifications</v-card-subtitle>
                     <v-card class="ma-3" v-for="cert in certifications" :key="cert.name"
                         
@@ -74,7 +74,14 @@ const props = defineProps<{
 
 
 
-const certifications = ref([...certificationsInfo])
+interface Certification {
+    name: string;
+    issuedBy: string;
+    dateIssued: string;
+    link?: string;
+}
+
+const certifications = ref<Certification[]>([...certificationsInfo])
 const visibleCerts = computed(() => certifications.value.slice(0,3))
 const totalCerts = computed(() => visibleCerts.value.length)
 

@@ -1,48 +1,60 @@
 <template>
     
     <Welcome width="100%" />
-        <v-row >
-            <v-col :cols="calCols[0]">
-                <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
-                >  
-                    <v-btn v-if="showToggleTabsBtn" 
-                        @click="showTabs=!showTabs" 
-                        :icon="showTabs ? 'mdi-chevron-left' : 'mdi-chevron-right'"
-                        variant="elevated"
-                    >
-                    </v-btn>
-                    <!-- tabs -->
-                    <v-tabs v-model="tab" v-if="showTabs" 
-                        style="width:100%"
-                        :bg-color="theme.current.value.colors.background"
-                        direction="vertical" 
-                        key="text"
-                        :items="tabs"
-                        selected-class="gradient-bg"
-                        grow
-                    >
-                        <v-tab v-for="(tab, index) in tabs" :key="tab.text" variant="flat" style="white-space: normal;word-break: break-word ;"
-                            :value="tab.text"
-                            :color="theme.current.value.colors.secondary"
-                            base-color="transparent"
-                            :prepend-icon="tab.icon"
-                            @click="handleTabChange(index, tab.title)"
-                    >
-                          {{ tab.title }}
-                        </v-tab>
-                    </v-tabs> 
-                </div>
-            </v-col>
-            <v-col :cols="calCols[1]">
-                <component v-for="tab in tabs" :key="tab.text" :is="tab.component"
-                ref="sections" 
-                :value="tab.title"
-                :title="tab.title"
-                :section-id="slagify(tab.title)" style="overflow:visible;"
-                :icon="tab.icon"
-                />
-            </v-col>
-        </v-row>
+    <v-row >
+        <v-col :cols="calCols[0]">
+            <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
+            >  
+                <v-btn v-if="showToggleTabsBtn" 
+                    @click="showTabs=!showTabs" 
+                    :icon="showTabs ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+                    variant="elevated"
+                >
+                </v-btn>
+                <!-- tabs -->
+                <v-tabs v-model="tab" v-if="showTabs" 
+                    style="width:100%"
+                    :bg-color="theme.current.value.colors.background"
+                    direction="vertical" 
+                    key="text"
+                    :items="tabs"
+                    selected-class="gradient-bg"
+                    grow
+                >
+                    <v-tab v-for="(tab, index) in tabs" :key="tab.text" variant="flat" style="white-space: normal;word-break: break-word ;"
+                        :value="tab.text"
+                        :color="theme.current.value.colors.secondary"
+                        base-color="transparent"
+                        :prepend-icon="tab.icon"
+                        @click="handleTabChange(index, tab.title)"
+                >
+                        {{ tab.title }}
+                    </v-tab>
+                </v-tabs> 
+            </div>
+        </v-col>
+        <v-col :cols="calCols[1]">
+            <component v-for="tab in tabs" :key="tab.text" :is="tab.component"
+            ref="sections" 
+            :value="tab.title"
+            :title="tab.title"
+            :section-id="slagify(tab.title)" style="overflow:visible;"
+            :icon="tab.icon"
+            />
+        </v-col>
+    </v-row>
+    
+    <v-footer height="20vh" class="mt-10 text-center d-flex flex-column ga-2 py-4" :color="theme.current.value.colors.secondary">
+
+        <v-spacer></v-spacer>
+        <v-divider class="my-2" thickness="2" width="50"></v-divider>
+
+
+
+        <div>
+            {{ new Date().getFullYear() }} — <strong> Michalis Vourtoumis </strong>
+        </div>
+    </v-footer>
 </template>
 
 <script setup lang="ts">
@@ -315,14 +327,14 @@ watch(() => route.hash, (newHash, oldHash) => {
 
 <style scoped>
     .gradient-bg {
-        background-image: linear-gradient(
+        /* background-image: linear-gradient(
             to right,
             rgb(var(--v-theme-secondary)) 0%,
             rgb(var(--v-theme-secondary), 0.1) 30%,
             rgb(var(--v-theme-background)) 100%
         ) !important;
-        /* color: rgb(var(--v-theme-secondary)) !important */
-        color:beige
+        color: rgb(var(--v-theme-secondary)) !important
+        color:beige */
     }
 
     .stickyTabs {

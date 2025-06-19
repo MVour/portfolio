@@ -13,12 +13,15 @@
         </template>
         <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
         <v-card-text style="display: flex;flex-flow: column;">
+            
             <template v-for="pr_grp in projectsInfo.groups">
-
-                <v-card-title class="text-uppercase">{{ pr_grp }}</v-card-title>
-                <v-slide-group show-arrows="always">
-                    <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
-                </v-slide-group>
+                <template v-if="filterProjects(pr_grp).length">
+                    
+                    <v-card-title class="text-uppercase">{{ pr_grp }}</v-card-title>
+                    <v-slide-group show-arrows="always">
+                        <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
+                    </v-slide-group>
+                </template>
             </template>
             <template v-if="remainingProjects.length">
                 <v-card-title class="text-uppercase">Remaining Projects</v-card-title>

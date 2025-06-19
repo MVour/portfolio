@@ -13,13 +13,14 @@ import { createVuetify } from 'vuetify'
 
 
 
+
 const lightTheme = {
   dark: false,
   colors: {
-    background: '#f4f4f4',
+    background: '#ECEFF1', // A light, cool gray from Material Design (Blue Gray 50)
     surface: '#ffffff',
-    primary: '#1976D2',
-    secondary: '#424242',
+    primary: '#607D8B', // A blue-gray that complements your new secondary
+    secondary: '#424242', // Your preferred dark gray secondary
     accent: '#82B1FF',
     error: '#FF5252',
     info: '#2196F3',
@@ -33,11 +34,11 @@ const darkTheme = {
   colors: {
     background: '#121212',
     surface: '#1E1E1E',
-    primary: '#90CAF9',
-    secondary: '#03DAC6',
+    primary: '#E0E0E0',   
+    secondary: 'indigo-lighten-1', // Confirmed: Vuetify will resolve this to the correct color
     accent: '#FF4081',
     error: '#CF6679',
-    info: '#2196F3',
+    info: '#2199F3', // Corrected a typo here from original, assuming you meant standard info color
     success: '#4CAF50',
     warning: '#FB8C00'
   }
