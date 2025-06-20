@@ -149,7 +149,6 @@ const mediaSectionStyle = computed(() => {
                 display: 'flex',
                 flexDirection: 'column',
                 width: '100%',
-                border: '1px solid red',
             };
     
         case 'sm':
@@ -157,7 +156,6 @@ const mediaSectionStyle = computed(() => {
                 display: 'flex',
                 flexDirection: 'column',
                 width: '100%',
-                border: '1px solid red',
             };
 
         case 'md':
