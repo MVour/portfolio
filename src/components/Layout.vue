@@ -91,8 +91,8 @@ const sections = ref<InstanceType<typeof Section | typeof Personal | typeof Cont
 
 const tabs = [
     { icon: "mdi-tooltip-account", text: 'Personal Info', title: 'Personal Info', component: Personal },
-    // { icon: "mdi-phone", text: 'Contact', title: 'Contact', component: Contact  },
-    // { icon: "mdi-book-open", text: 'History', title: 'Education & Work History', component: History  },
+    { icon: "mdi-phone", text: 'Contact', title: 'Contact', component: Contact  },
+    { icon: "mdi-book-open", text: 'History', title: 'Education & Work History', component: History  },
     { icon: "mdi-folder", text: 'Projects', title: 'Projects', component: Projects  },
     { icon: "mdi-briefcase", text: 'Skills', title: 'Skills', component: Stack  },
     { icon: "mdi-file-document", text: 'Publications & Certifications', title: 'Publications & Certifications', component: CertsPubs  },
