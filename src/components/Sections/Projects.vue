@@ -1,6 +1,6 @@
 <template>
 
-    <v-card :id="sectionId" style="margin:50px auto  50px auto;padding:20px" height="auto" :color="theme.current.value.colors.primary" variant="text">
+    <v-card :id="sectionId"height="auto" style="" :color="theme.current.value.colors.primary" variant="text">
 
         <template v-slot:prepend>
 
@@ -9,22 +9,21 @@
             </v-avatar>
         </template>
         <template v-slot:title>
-            {{ title }}
+
+                {{ title }}
         </template>
-        <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
         <v-card-text style="display: flex;flex-flow: column;">
             
             <template v-for="pr_grp in projectsInfo.groups">
                 <template v-if="filterProjects(pr_grp).length">
-                    
-                    <v-card-title class="text-uppercase">{{ pr_grp }}</v-card-title>
+                    <v-card-subtitle class="text-uppercase">{{ pr_grp }}</v-card-subtitle>
                     <v-slide-group show-arrows="always">
                         <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
                     </v-slide-group>
                 </template>
             </template>
             <template v-if="remainingProjects.length">
-                <v-card-title class="text-uppercase">Remaining Projects</v-card-title>
+                <v-card-subtitle class="text-uppercase">Remaining Projects</v-card-subtitle>
                 <v-slide-group show-arrows="always">
                     
                     <ProjectCard 
@@ -109,3 +108,9 @@ const remainingProjects = computed(() => {
 });
 
 </script>
+
+<style scoped>
+/* Add your styles here */
+
+
+</style>

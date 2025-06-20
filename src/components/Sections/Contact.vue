@@ -1,7 +1,6 @@
 <template>
 
-    <v-card :id="sectionId"  
-        style="margin:50px auto  50px auto;padding:20px;" 
+    <v-card :id="sectionId"
         height="auto" 
         :color="theme.current.value.colors.primary" 
         variant="text"
@@ -18,8 +17,8 @@
         <v-card-subtitle> Contact me</v-card-subtitle>
         <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
 
-        <v-img style="position:absolute;left:50%;" cover :src="contact_img" width="50%" height="auto" alt="Contact Illustration" />
-            <v-list density="comfortable" width="50%" min-width="400px">
+        <!-- <v-img style="position:absolute;left:50%;" cover :src="contact_img" width="50%" height="auto" alt="Contact Illustration" /> -->
+            <v-list density="comfortable" width="50%" min-width="300px">
                 <v-list-item >
                     <template v-slot:prepend>
                         <v-img :src="linkedin_svg" width="40" height="40"/>

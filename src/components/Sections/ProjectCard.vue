@@ -1,12 +1,15 @@
 <template> 
     
-    <v-card width="300" class="project-card"  :color="theme.current.value.colors.surface" variant="flat" :key="project.title">
+    <v-card class="project-card"  :color="theme.current.value.colors.surface" variant="flat" :key="project.title">
         <template  v-slot:prepend>
 
             <v-icon size="40" icon="mdi-file-code"> </v-icon>
         </template>
         <template v-slot:title>
-            {{ project.title }}
+            <div class="v-card-title">
+
+                {{ project.title }}
+            </div>
         </template>
         <template  v-slot:append >
 
@@ -22,7 +25,7 @@
             </v-row>
         </v-card-text>
         <v-col class="chip-container">
-            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
+            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" style="font-size:10px" color="accent" font-size="10" text-color="white">
                 {{ tag }}
             </v-chip>
         </v-col>
@@ -109,11 +112,19 @@ const project = props.project ?? {
 .project-card{
     display:flex;
     flex-direction: column;  /* Added to ensure proper layout */
-    min-width:250px;
+    min-width:150px;
+    width:300px;
     margin:10px;
+    height: 350px
     
-    width: 100%;  /* Added to make the card responsive */
 }
+
+
+.v-card-title {
+    white-space: wrap;
+    width:auto;
+}
+
 
 .project-card-text {
     display:flex;
@@ -121,6 +132,7 @@ const project = props.project ?? {
 }
 
 .chip-container {
+    font-size: smaller;  /* Reverted to original value */
     margin-top:auto;
     align-self: end;
     display: flex;

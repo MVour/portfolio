@@ -1,6 +1,6 @@
 <template>
 
-    <v-card :id="sectionId" style="margin:50px auto  50px auto;padding:20px" height="auto" :color="theme.current.value.colors.primary" variant="text">
+    <v-card :id="sectionId" height="auto" :color="theme.current.value.colors.primary" variant="text">
         <template v-slot:prepend>
 
             <v-avatar size="48">
