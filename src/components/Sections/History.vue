@@ -1,50 +1,60 @@
 <template>
 
-    <v-card :id="sectionId"
-        style="margin:50px auto  50px auto;padding:20px;" 
+    <v-card :id="sectionId" style=""
         height="auto" 
         variant="text"
         :color="theme.current.value.colors.primary" 
     >
-        <v-card-title>{{ title }} </v-card-title>
+        <template v-slot:prepend>
+
+                <v-avatar size="48">
+                    <v-icon size="34">{{ icon }}</v-icon>
+                </v-avatar>
+        </template>
+        <template v-slot:title>
+                {{ title }}
+        </template>
         <v-card-subtitle> Education History</v-card-subtitle>
-        <v-card-text>
-            <v-row  class="pa-5" style="justify-content: space-between;">
-                <v-col >
-                <v-chip-group style="justify-self: right;" class="mb-4" column v-model="toggleTimeline" multiple mandatory>
-                        <v-chip  v-for="item in ['Education', 'Work']" :key="item" :value="item" variant="elevated"
-                        :color="theme.current.value.colors.primary"
-                        text-color="white"
-                        @click=""
-                        >
-                        {{ item }}
-                    </v-chip>
-                </v-chip-group>
-                <v-divider class="mb-4"></v-divider>
-                    
-                <v-timeline class="overflow-y-auto" :side="timelineSide" style="width:auto;"> 
-                    <v-timeline-item  v-for="(edu, index) in timelineItems" :key="index">
-                        <template v-slot:opposite>
-                            {{ edu.year_start }} - {{ edu.year_end }} 
-                        </template>
-                        <template v-slot:icon>
-                            <v-avatar size="70">
-                                <v-img :src="getImage(edu.institution.img_path)" />
-                            </v-avatar>
-                        </template>
-                        <v-card style="min-width:300px;width:auto;max-width: 100%;" variant="elevated" class=" pa-4 elevation-5">
-                            <v-card-title>{{ edu.degree || edu.role }}</v-card-title>
-                            <v-card-subtitle>{{ edu.institution.name }}</v-card-subtitle>
-                            <v-card-text>{{ edu.institution.info }}, {{ edu.institution.location }} </v-card-text>
-                            <v-card-actions>
-                                <v-btn @click="selectEducation(edu)" color="primary">View More</v-btn>
-                            </v-card-actions>
-                        </v-card>
-                    </v-timeline-item>
-                </v-timeline>
-            </v-col>
+        <v-card-text style="display: flex;flex-flow:column;">
+                <!-- <v-col  > -->
+                    <v-chip-group class="mb-4" column v-model="toggleTimeline" multiple mandatory>
+                            <v-chip  v-for="item in ['Education', 'Work']" :key="item" :value="item" variant="elevated"
+                            :color="theme.current.value.colors.secondary"
+                            text-color="white"
+                            @click=""
+                            >
+                            {{ item }}
+                        </v-chip>
+                    </v-chip-group>
+                    <v-divider :thickness="3" ></v-divider>
+                        
+                    <v-timeline class="" :side="timelineSide" style="width: 100%;"> 
+                        <v-timeline-item  v-for="(edu, index) in timelineItems" :key="index">
+                            <template v-slot:opposite>
+                                {{ edu.year_start }} - {{ edu.year_end }} 
+                            </template>
+                            <template v-slot:icon>
+                                <v-avatar size="70">
+                                    <v-img :src="getImage(edu.institution.img_path)" />
+                                </v-avatar>
+                            </template>
+                            <v-card style="overflow:visible;max-width: 100%;" variant="elevated" class=" pa-4 elevation-5">
+                                <v-icon size="40"  style="position:absolute; top:-20px;left:5%;" 
+                                    :icon="edu.degree ? 'mdi-school' : 'mdi-domain'">
+                                </v-icon>
+                                
+                                <v-card-title>{{ edu.degree || edu.role }}</v-card-title>
+                                <v-card-subtitle>{{ edu.institution.name }}</v-card-subtitle>
+                                <v-card-text>{{ edu.institution.info }}, {{ edu.institution.location }} </v-card-text>
+                                <v-card-actions>
+                                    <v-btn @click="selectEducation(edu)" color="primary">View More</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-timeline-item>
+                    </v-timeline>
+                <!-- </v-col> -->
             <v-divider v-if="edu_selected" vertical></v-divider>
-            <v-col>
+            <!-- <v-drawer>
                 <v-card v-if="edu_selected" class="stickyCard" 
                     :title="edu_selected.degree || edu_selected.role"
                     :subtitle="edu_selected.institution.name || ''"
@@ -72,8 +82,8 @@
                         <v-btn @click="clearSelection" color="secondary">Close</v-btn>
                     </v-card-text>
                 </v-card>
-            </v-col>
-            </v-row>
+            </v-drawer> -->
+            
         </v-card-text>
     </v-card>
 
@@ -140,7 +150,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 
@@ -213,25 +224,7 @@ function clearSelection() {
 }
 
 
-const tabs = [
-  { title: 'Tab 1', content: 'Content for Tab 1' },
-  { title: 'Tab 2', content: 'Content for Tab 2' },
-  { title: 'Tab 3', content: 'Content for Tab 3' },
-  { title: 'Tab 4', content: 'Content for Tab 4' },
-  { title: 'Tab 5', content: 'Content for Tab 5' },
-  { title: 'Tab 6', content: 'Content for Tab 6' },
-  { title: 'Tab 7', content: 'Content for Tab 7' },
-  { title: 'Tab 8', content: 'Content for Tab 8' },
-  { title: 'Tab 9', content: 'Content for Tab 9' },
-  { title: 'Tab 10', content: 'Content for Tab 10' },
-  { title: 'Tab 11', content: 'Content for Tab 11' },
-];
 
-
-function getContent() {
-    const tab = tabs.find(t => t.title === props.title);
-    return tab ? tab.content : 'NOPE';
-}
 
 function getImage(imgPath: string): string {
     try {
@@ -253,7 +246,7 @@ function getImage(imgPath: string): string {
     height:auto;
     top:25%;
     white-space: wrap;
-    min-width:300px;
+    /* min-width:300px; */
     width: auto;
     justify-self: center;  overflow: visible !important;
 }

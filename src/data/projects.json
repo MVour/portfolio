@@ -1,114 +1,92 @@
 {
-    "groups": ["nodeJs", "kafka", "java"],
+    "groups": ["Node.js", "kafka", "C"],
     "projects_list":[
 
         {
-            "title": "Project 1",
-            "description": "Description for Project 1",
-            "repo_url": "http://example.com/project1",
-            "live_url": "http://example.com/live_project1",
-            "tags": ["vueJs"]
+            "title": "Ecosystem",
+            "description_short": "A C++ agent-based ecological simulator modeling species interactions and environmental dynamics using OOP and grid-based discrete time steps.",
+            "description": "Ecosystem is a C++ simulation of a virtual ecological environment, where multiple species interact under configurable environmental rules. Agents (plants, herbivores, carnivores) employ object-oriented design with polymorphism, leverage spatial grids, and run in discrete time steps. Core features include resource competition, predator–prey dynamics, reproduction, and death—all visualized via ASCII or plotting libraries. ",
+            "repo_url": "https://github.com/MVour/Ecosystem",
+            "live_url": null,
+            "tags": ["C++", "OOP", "Simulation"],
+            "icon": "mdi-tree-outline"
         },
         {
-            "title": "Project 2",
-            "description": "Description for Project 2",
-            "repo_url": "http://example.com/project2",
-            "live_url": "http://example.com/live_project2",
-            "tags": ["javascript", "springBoot", "java"]
+            "title": "Disease Aggregator",
+            "description": "DiseaseAggregator is a concurrent client-server application written in C for processing distributed disease statistics. It uses multiple processes and threads, with workers parsing country-specific data and communicating via named pipes and sockets. A multithreaded server manages query and statistics ports, handling client requests concurrently with a thread pool and circular buffer. The system supports fault-tolerant worker management and uses efficient in-memory data structures like hash tables and binary trees for fast querying.",
+            "description_short": "A multithreaded client-server system in C for distributed parsing and querying of disease statistics using sockets, pipes, and custom in-memory data structures.",
+            "repo_url": "https://github.com/MVour/DiseaseAggregator",
+            "live_url": null,
+            "tags": ["C", "Multithreading", "sockets", "Client-Server"],
+            "icon": "mdi-doctor"
         },
         {
-            "title": "Project 3",
-            "description": "Description for Project 3",
-            "repo_url": "http://example.com/project3",
-            "live_url": "http://example.com/live_project3",
-            "tags": ["react", "nodeJs", "kafka"]
+            "title": "Linux Filesystem",
+            "description": "linux_filesystem is a simplified custom filesystem implementation in C, designed to run on Linux. It interacts with the Virtual File System (VFS) layer and models core filesystem components like inodes, directories, and block management. The project focuses on low-level data structure manipulation, I/O handling, and integration with kernel-like interfaces for mounting and accessing file data.",
+            "description_short": "A custom Linux filesystem written in C, modeling inode, block, and directory structures through low-level VFS-like interfaces.",
+            "repo_url": "https://github.com/MVour/linux_filesystem",
+            "live_url": null,
+            "tags": ["C", "Linux Kernel", "Linux", "Data Structures", "VFS", "Systems"],
+            "icon": "mdi-linux"
         },
         
         {
-            "title": "Project 4",
-            "description": "Description for Project 4",
-            "repo_url": "http://example.com/project4",
-            "live_url": "http://example.com/live_project4",
-            "tags": ["python", "flask"]
+            "title": "Web Portofolio",
+            "description": "A personal website showcasing projects and skills.",
+            "description_short": "This portofolio!",
+            "repo_url": "https://github.com/MVour/portofolio",
+            "live_url": null,
+            "tags": ["Vue.js", "Node.js"],
+            "icon": "mdi-card-account-details-outline" 
+        },
+        
+        {
+            "title": "Snake Game",
+            "description": "A classic arcade game where the player controls a snake to eat food and grow while avoiding collisions with the walls and itself.",
+            "description_short": "A classic snake game made in Godot Game Engine!",
+            "repo_url": "https://github.com/MVour/snake_game",
+            "live_url": "https://mvour-bz.github.io/snake_game",
+            "tags": ["Godot", "GDScript", "Arcade"],
+            "icon": "mdi-snake"
+        },
+
+        {
+            "title": "Drone Project",
+            "description": "A modular drone software system implementing both the onboard flight controller (embedded in C) and the ground-based drone controller (developed in Python). The system integrates low-level communication protocols and a PID control loop for real-time flight dynamics on a microcontroller. The Python-based controller supports visual feedback and interface integration via LoRa, Wi-Fi, and Bluetooth.",
+            "description_short": "End-to-end drone control system with C-based flight controller firmware and a Python-powered ground control UI using LoRa, Wi-Fi, and Bluetooth.",
+            "repo_url": "https://github.com/MVour-bz/drone",
+            "live_url": null,
+            "tags": ["Drone", "C", "Python", "Embedded Systems", "Control Systems"],
+            "icon": "mdi-quadcopter"
         },
         {
-            "title": "Project 5",
-            "description": "Description for Project 5",
-            "repo_url": "http://example.com/project5",
-            "live_url": "http://example.com/live_project5",
-            "tags": ["django", "html", "css", "nodeJs"]
+            "title": "Board Game 2D",
+            "description": "A Godot-based custom implementation of the 2D board game Shadow Hunters, featuring scene-based board layouts, GDScript-driven game logic for turn sequencing, player state, card interactions, AI or multiplayer support, and UI elements for tracking actions, health, and shadows.",
+            "description_short": "A custom implementation of the 2D board game Shadow Hunters.",
+            "repo_url": "https://github.com/MVour-bz/board2D",
+            "live_url": null,
+            "tags": ["Godot", "GDScript", "Multiplayer"],
+            "icon": "mdi-gamepad-variant"
         },
         {
-            "title": "Project 6",
-            "description": "Description for Project 6",
-            "repo_url": "http://example.com/project6",
-            "live_url": "http://example.com/live_project6",
-            "tags": ["ruby", "rails"]
+            "title": "FaceIn",
+            "description": "A sample web application showcasing modern client-server architectures and frameworks. Likely includes a frontend (HTML/CSS/JavaScript or framework like React/Vue), a backend (Node.js, Python/Flask, or similar), and demonstrations of RESTful APIs, database interactions, and deployment practices. It serves as a reference for common web application technologies, demonstrating how components integrate into a cohesive full‑stack system.",
+            "description_short": "A demo full‑stack web application mimicing LinkedIn, illustrating key modern web technologies and architectural patterns.",
+            "repo_url": "https://github.com/rania-v/web-application-technologies",
+            "live_url": null,
+            "tags": [ "Vue.js", "Node.js", "Docker", "MongoDB", "express", "Full-Stack", "frontend", "backend", "Database"],
+
+            "icon": "mdi-face-recognition"
         },
         {
-            "title": "Project 7",
-            "description": "Description for Project 7",
-            "repo_url": "http://example.com/project7",
-            "live_url": "http://example.com/live_project7",
-            "tags": ["go", "microservices"]
-        },
-        {
-            "title": "Project 8",
-            "description": "Description for Project 8",
-            "repo_url": "http://example.com/project8",
-            "live_url": "http://example.com/live_project8",
-            "tags": ["typescript", "nodeJs"]
-        },
-        {
-            "title": "Project 9",
-            "description": "Description for Project 9",
-            "repo_url": "http://example.com/project9",
-            "live_url": "http://example.com/live_project9",
-            "tags": ["graphql", "apollo"]
-        },
-        {
-            "title": "Project 10",
-            "description": "Description for Project 10",
-            "repo_url": "http://example.com/project10",
-            "live_url": "http://example.com/live_project10",
-            "tags": ["flutter", "dart"]
-        },
-        {
-            "title": "Project 11",
-            "description": "Description for Project 11",
-            "repo_url": "http://example.com/project11",
-            "live_url": "http://example.com/live_project11",
-            "tags": ["kotlin", "android", "java"]
-        },
-        {
-            "title": "Project 12",
-            "description": "Description for Project 12",
-            "repo_url": "http://example.com/project12",
-            "live_url": "http://example.com/live_project12",
-            "tags": ["swift", "ios", "kafka"]
-        },
-        {
-            "title": "Project 13",
-            "description": "Description for Project 13",
-            "repo_url": "http://example.com/project13",
-            "live_url": "http://example.com/live_project13",
-            "tags": ["php", "laravel", "nodeJs"]
-        },
-        {
-            "title": "Project 14",
-            "description": "Description for Project 14",
-            "repo_url": "http://example.com/project14",
-            "live_url": "http://example.com/live_project14",
-            "tags": ["csharp", "dotnet", "java"]
-        },
-        {
-            "title": "Project 15",
-            "description": "Description for Project 15",
-            "repo_url": "http://example.com/project15",
-            "live_url": "http://example.com/live_project15",
-            "tags": ["rust", "webAssembly", "kafka", "java", "nodeJs"]
+            "title": "Big Data Entity Resolution",
+            "description": "A C-based system for linking semantically related product specs by forming cliques using supervised learning (logistic regression with BoW/TF-IDF), efficient hash-based structures, and clique merging logic guided by labeled training data.",
+            "description_short": "Efficient entity linking system clustering related product specs using C, text features, and logistic regression.",
+            "repo_url": "https://github.com/meryfanou/BigDataEntityResolution",
+            "live_url": null,
+            "tags": ["C", "Multithreading", "ML", "Text Analytics", "Logistic Regression", "TF-IDF", "BoW"],
+
+            "icon": "mdi-multicast"
         }
-        
-        
     ]
 }

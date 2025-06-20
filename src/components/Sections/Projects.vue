@@ -1,39 +1,37 @@
 <template>
 
-    <v-card :id="sectionId" style="margin:50px auto  50px auto;padding:20px" height="auto" :color="theme.current.value.colors.primary" variant="text">
+    <v-card :id="sectionId"height="auto" style="" :color="theme.current.value.colors.primary" variant="text">
 
-        <v-card-title>{{ title }} </v-card-title>
-        <v-card-subtitle>{{ content.desc }}</v-card-subtitle>
+        <template v-slot:prepend>
+
+            <v-avatar size="48">
+                <v-icon size="34">{{ icon }}</v-icon>
+            </v-avatar>
+        </template>
+        <template v-slot:title>
+
+                {{ title }}
+        </template>
         <v-card-text style="display: flex;flex-flow: column;">
+            
             <template v-for="pr_grp in projectsInfo.groups">
-
-                <v-card-title>{{ pr_grp }}</v-card-title>
-                <v-slide-group show-arrows="always">
-                    <v-card width="230" :color="theme.current.value.colors.surface" variant="flat" v-for="project in filterProjects(pr_grp)" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
-                        
-                        <v-card-title>{{ project.title }}</v-card-title>
-                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
-                        <v-card-text>
-                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                                {{ tag }}
-                            </v-chip>
-                        </v-card-text>
-                    </v-card>
-                </v-slide-group>
+                <template v-if="filterProjects(pr_grp).length">
+                    <v-card-subtitle class="text-uppercase">{{ pr_grp }}</v-card-subtitle>
+                    <v-slide-group show-arrows="always">
+                        <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
+                    </v-slide-group>
+                </template>
             </template>
             <template v-if="remainingProjects.length">
-                <v-card-title>Remaining Projects</v-card-title>
-                <v-slide-group show-arrows >
+                <v-card-subtitle class="text-uppercase">Remaining Projects</v-card-subtitle>
+                <v-slide-group show-arrows="always">
                     
-                    <v-card width="230"  :color="theme.current.value.colors.surface" variant="flat" v-for="project in remainingProjects" :key="project.title" style="min-width:250px;margin:10px;min-height: 300px;">
-                        <v-card-title>{{ project.title }}</v-card-title>
-                        <v-card-subtitle>{{ project.description }}</v-card-subtitle>
-                        <v-card-text>
-                            <v-chip v-for="tag in project.tags" :key="tag" class="ma-1" color="primary" text-color="white">
-                                {{ tag }}
-                            </v-chip>
-                        </v-card-text>
-                    </v-card>
+                    <ProjectCard 
+                        v-for="project in remainingProjects" 
+                        :key="project.title" 
+                        :project="project" 
+                    />
+                    
                 </v-slide-group>
 
             </template>
@@ -45,6 +43,7 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify/lib/composables/theme';
 import projectsInfo from '@/data/projects.json';
+import ProjectCard from './ProjectCard.vue';
 import stack from '@/data/stack.json';
 import { computed } from 'vue';
 
@@ -52,7 +51,8 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
 
 
@@ -108,3 +108,9 @@ const remainingProjects = computed(() => {
 });
 
 </script>
+
+<style scoped>
+/* Add your styles here */
+
+
+</style>

@@ -1,46 +1,63 @@
 <template>
     
     <Welcome width="100%" />
-        <v-row >
-            <v-col :cols="calCols[0]">
-                <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
-                >  
-                    <v-btn v-if="showToggleTabsBtn" 
-                        @click="showTabs=!showTabs" 
-                        :icon="showTabs ? 'mdi-chevron-left' : 'mdi-chevron-right'"
-                        variant="elevated"
-                    >
-                    </v-btn>
-                    <!-- tabs -->
-                    <v-tabs v-model="tab" v-if="showTabs" 
-                        style="width:100%"
-                        :bg-color="theme.current.value.colors.background"
-                        direction="vertical" 
-                        key="text"
-                        :items="tabs"
-                        selected-class="gradient-bg"
-                        grow
-                    >
-                        <v-tab v-for="(tab, index) in tabs" :key="tab.text" variant="flat" style="white-space: normal;word-break: break-word ;"
-                            :value="tab.text"
-                            :color="theme.current.value.colors.secondary"
-                            base-color="transparent"
-                            @click="handleTabChange(index, tab.title)"
-                        >
-                            {{ tab.title }}
-                        </v-tab>
-                    </v-tabs> 
-                </div>
-            </v-col>
-            <v-col :cols="calCols[1]">
-                <component v-for="tab in tabs" :key="tab.text" :is="tab.component"
-                ref="sections" 
-                :value="tab.title"
-                :title="tab.title"
-                :section-id="slagify(tab.title)" style="overflow:visible;"
-                />
-            </v-col>
-        </v-row>
+    <v-row style="margin:0"  >
+        <v-col :cols="calCols[0]" >
+            <div :class="{ 'floatTabs': showTabsAsFloat , 'stickyTabs': !showTabsAsFloat }"
+            >  
+                <v-btn v-if="showToggleTabsBtn" 
+                    @click="showTabs=!showTabs" 
+                    :icon="showTabs ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+                    variant="elevated"
+                >
+                </v-btn>
+                <!-- tabs -->
+                <v-tabs v-model="tab" v-if="showTabs" 
+                    style="width:auto"
+                    :bg-color="theme.current.value.colors.background"
+                    direction="vertical" 
+                    key="text"
+                    :items="tabs"
+                    selected-class="gradient-bg"
+                    grow
+                >
+                    <v-tab v-for="(tab, index) in tabs" :key="tab.text" variant="flat" style="white-space: normal;word-break: break-word ;"
+                        :value="tab.text"
+                        :color="theme.current.value.colors.primary"
+                        base-color="transparent"
+                        :prepend-icon="tab.icon"
+                        @click="handleTabChange(index, tab.title)"
+                >
+                        <!-- {{ tab.title }} -->
+                    </v-tab>
+                </v-tabs> 
+            </div>
+        </v-col>
+
+
+        <v-col :cols="calCols[1]" class="main-col" style="padding: 0;">
+            <component v-for="tab in tabs" :key="tab.text" :is="tab.component"  
+            ref="sections" 
+            :style="mediaSectionStyle"
+            :value="tab.title"
+            :title="tab.title"
+            :section-id="slagify(tab.title)" style="overflow:visible;"
+            :icon="tab.icon"
+            />
+        </v-col>
+    </v-row>
+    
+    <v-footer height="20vh" class="mt-10 text-center d-flex flex-column ga-2 py-4" :color="theme.current.value.colors.secondary">
+
+        <v-spacer></v-spacer>
+        <v-divider class="my-2" thickness="2" width="50"></v-divider>
+
+
+
+        <div>
+            {{ new Date().getFullYear() }} — <strong> {{ personalInfo.name }} </strong>
+        </div>
+    </v-footer>
 </template>
 
 <script setup lang="ts">
@@ -50,9 +67,13 @@ import Personal from './Sections/Personal.vue'
 import Contact from './Sections/Contact.vue'
 import History from './Sections/History.vue'
 import Projects from './Sections/Projects.vue'
+import Stack from './Sections/Stack.vue' 
+import CertsPubs from './Sections/CertsPubs.vue'
 import { ref, watch, onMounted, nextTick, onBeforeUnmount, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTheme, useDisplay } from 'vuetify'
+
+import personalInfo from '@/data/personal.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -69,13 +90,12 @@ const sections = ref<InstanceType<typeof Section | typeof Personal | typeof Cont
     
 
 const tabs = [
-    { text: 'Personal Info', title: 'Personal Info', component: Personal },
-    { text: 'Contact', title: 'Contact', component: Contact  },
-    // { text: 'Publications', title: 'Publications', component: Section  },
-    { text: 'History', title: 'Education & Work History', component: History  },
-    { text: 'Projects', title: 'Projects', component: Projects  },
-    // { text: 'Skills', title: 'Skills', component: Section  },
-    //   { text: 'Certifications', title: 'Certifications', component: Section  },
+    { icon: "mdi-tooltip-account", text: 'Personal Info', title: 'Personal Info', component: Personal },
+    { icon: "mdi-phone", text: 'Contact', title: 'Contact', component: Contact  },
+    { icon: "mdi-book-open", text: 'History', title: 'Education & Work History', component: History  },
+    { icon: "mdi-folder", text: 'Projects', title: 'Projects', component: Projects  },
+    { icon: "mdi-briefcase", text: 'Skills', title: 'Skills', component: Stack  },
+    { icon: "mdi-file-document", text: 'Publications & Certifications', title: 'Publications & Certifications', component: CertsPubs  },
 ]
 
 
@@ -108,20 +128,59 @@ const slagify = (text: string) => {
 const calCols = computed( () => {
     switch (display.name.value) {
         case 'xs':
-            return [3, 12];
+            return [1, 12];
         case 'sm':
-            return [3, 12];
+            return [1, 12];
         case 'md':
-            return [2, 10];
+            return [1, 11];
         case 'lg':
-            return [2, 10];
+            return [1, 11];
         case 'xl':
-            return [2, 10];
+            return [1, 11];
         default:
-            return [2, 10];
+            return [1, 11];
     }
 })
 
+const mediaSectionStyle = computed(() => {
+    switch (display.name.value) {
+        case 'xs':
+            return {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+            };
+    
+        case 'sm':
+            return {
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+            };
+
+        case 'md':
+            return {
+                width: '100%',
+                alignItems: 'flex-start',
+                justifyContent: 'flex-start',
+                margin: '50px 22.5vw 50px auto',
+            };
+
+        case 'lg':
+            return {
+                width: '55vw',
+                margin: '50px 22.5vw 50px auto',
+            };
+
+        case 'xl':
+            return {
+                width: '55vw',
+                margin: '50px 22.5vw 50px auto',
+            };
+        default:
+            return {};
+    }
+});
 
 
 function scrollToSection(index: number) {
@@ -311,16 +370,29 @@ watch(() => route.hash, (newHash, oldHash) => {
 </script> 
 
 <style scoped>
+
     .gradient-bg {
-        background-image: linear-gradient(
+        /* background-image: linear-gradient(
             to right,
             rgb(var(--v-theme-secondary)) 0%,
             rgb(var(--v-theme-secondary), 0.1) 30%,
             rgb(var(--v-theme-background)) 100%
         ) !important;
-        /* color: rgb(var(--v-theme-secondary)) !important */
-        color:beige
+        color: rgb(var(--v-theme-secondary)) !important
+        color:beige */
     }
+
+    .main-col{
+        /* max-width: 55vw; */
+        /* border:2px solid red; */
+        /* display:inline-flex;
+        flex-direction: column;
+        padding: 20px; */
+        /* align-items: flex-start; */
+        /* justify-self: center; */
+        /* align-self: center; */
+    }
+    /* justify-content: left; */
 
     .stickyTabs {
         display: flex; 

@@ -11,20 +11,23 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+import colors from 'vuetify/util/colors'
+
 
 
 const lightTheme = {
   dark: false,
   colors: {
-    background: '#f4f4f4',
+    background: '#ECEFF1', // A light, cool gray from Material Design (Blue Gray 50)
     surface: '#ffffff',
-    primary: '#1976D2',
-    secondary: '#424242',
-    accent: '#82B1FF',
-    error: '#FF5252',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FB8C00'
+    primary: '#4d599c', // A blue-gray that complements your new secondary
+    secondary: '#424242', // Your preferred dark gray secondary
+    // accent: '#82B1FF',
+    error: '#851d22',
+    info: '#3267b5',
+    success: '#167533',
+    warning: '#FB8C00',
+    accent: '#bb61c1'
   }
 }
 
@@ -33,13 +36,13 @@ const darkTheme = {
   colors: {
     background: '#121212',
     surface: '#1E1E1E',
-    primary: '#90CAF9',
-    secondary: '#03DAC6',
-    accent: '#FF4081',
-    error: '#CF6679',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FB8C00'
+    primary: colors.indigo.lighten1,
+    secondary: '#424242', 
+    error: '#b41c2b',
+    info: '#388cfa',
+    success: '#009f42',
+    warning: '#FB8C00',
+    accent: '#E574ED'
   }
 }
 

@@ -1,16 +1,27 @@
 <template>
 
     <v-card :id="sectionId"  
-        style="margin:50px auto  50px auto;padding:20px" 
         height="auto" 
-        :color="theme.current.value.colors.primary" 
         variant="text"
-    >
+        >
+        <template v-slot:prepend>
 
-        <v-card-title>{{ title }} </v-card-title>
-        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
+                <v-avatar size="48">
+                    <v-icon size="34">{{ icon }}</v-icon>
+                </v-avatar>
+        </template>
+        <template v-slot:title >
+            <div :style="{
+                    color: theme.current.value.colors.primary,
+                }">
+                
+                {{ title }}
+            </div>
+        </template>
+        <v-divider></v-divider>
+        <v-card-text class="text-justify text-h6 font-weight-light centered-card-text" >
             {{ personalInfo.info }}
-            <v-divider class="ma-2"></v-divider>
+            <v-divider style="border: 1px solid yellow;" class="ma-2"></v-divider>
             <div>{{ personalInfo.job_title }}</div>
             <v-divider class="ma-2"></v-divider>
             <div>{{ personalInfo.city }}, {{ personalInfo.country }}</div>
@@ -30,23 +41,9 @@ const theme = useTheme();
 
 const props = defineProps<{
     title?: string,
-    sectionId?: string
+    sectionId?: string,
+    icon?: string
 }>()
-
-
-const tabs = [
-  { title: 'Tab 1', content: 'Content for Tab 1' },
-  { title: 'Tab 2', content: 'Content for Tab 2' },
-  { title: 'Tab 3', content: 'Content for Tab 3' },
-  { title: 'Tab 4', content: 'Content for Tab 4' },
-  { title: 'Tab 5', content: 'Content for Tab 5' },
-  { title: 'Tab 6', content: 'Content for Tab 6' },
-  { title: 'Tab 7', content: 'Content for Tab 7' },
-  { title: 'Tab 8', content: 'Content for Tab 8' },
-  { title: 'Tab 9', content: 'Content for Tab 9' },
-  { title: 'Tab 10', content: 'Content for Tab 10' },
-  { title: 'Tab 11', content: 'Content for Tab 11' },
-];
 
 
 const content = {
@@ -66,11 +63,21 @@ const content = {
     ]
 }
 
-function getContent() {
-    const tab = tabs.find(t => t.title === props.title);
-    return tab ? tab.content : 'NOPE';
-}
-
 
 
 </script>
+
+
+
+<style scoped>
+    .centered-card-text {
+        text-align: center;
+        
+        margin-left: auto;
+        display: flex;
+        flex-flow: column;
+        /* justify-items: center; */
+        /* align-items: center; */
+    }
+
+</style>

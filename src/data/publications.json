@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Multi-Partner Project: Green.Dat.AI: A Data Spaces Architecture for Enhancing Green AI Services",
+        "type": "IEEE",
+        "authors": [ "Ioannis Chrysakis", "Evangelos Agorogiannis", "Nikoleta Tsampanaki", "Michalis Vourtzoumis", "Eva Chondrodima",
+            "Yannis Theodoridis",
+            "Ben Capper",
+            "Martin Wagner",
+            "Aris Sotiropoulos",
+            "Fábio André Coelho",
+            "Cláudia Vanessa B,rito",
+            "Panos Protopapas",
+            "Despina Brasinika",
+            "Ioanna Fergadiotou",
+            "Christos Doulkeridis"
+        ],
+        "date": "21 May 2025",
+        "publisher": "IEEE",
+        "doi": "10.23919/DATE64628.2025.10992729",
+        "link": "https://ieeexplore.ieee.org/document/10992729",
+        "abstract": "The concept of data spaces has emerged as a structured, scalable solution to streamline and harmonize data sharing across established ecosystems. Simultaneously, the rise of AI services enhances the extraction of predictive insights, operational efficiency, and decision-making. Despite the potential of combining these two advancements, integration remains challenging: data spaces technology is still developing, and AI services require further refinement in areas like ML workflow orchestration and energy-efficient ML algorithms. In this paper, we introduce an integrated architectural framework, developed under the Green.Dat.AI project, that unifies the strengths of data spaces and AI to enable efficient, collaborative data sharing across sectors. A practical application is illustrated through a smart farming use case, showcasing how AI services within a data space can advance sustainable agricultural innovation. Integrating data spaces with AI services thus maximizes the value of decentralized data while enhancing efficiency through a powerful combination of data and AI capabilities."
+    }
+]
