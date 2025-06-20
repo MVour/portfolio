@@ -18,7 +18,6 @@
                 {{ title }}
             </div>
         </template>
-        <v-divider></v-divider>
         <v-card-text class="text-justify text-h6 font-weight-light centered-card-text" >
             {{ personalInfo.info }}
             <v-divider style="border: 1px solid yellow;" class="ma-2"></v-divider>

@@ -1,7 +1,7 @@
 [
     {
-        "year_start": "Sep 2024", 
-        "year_end": "May 2022", 
+        "year_end": "Sep 2024", 
+        "year_start": "May 2022", 
         "institution": { 
             "full_name": "Netcompany Intrasoft", 
             "name": "Netcompany", 
@@ -18,8 +18,8 @@
         "info": ""
     },
     {
-        "year_start": "Apr 2022", 
-        "year_end": "Oct 2021", 
+        "year_end": "Apr 2022", 
+        "year_start": "Oct 2021", 
         "institution": { 
             "full_name": "Intrasoft International", 
             "name": "Intrasoft International (Former)", 

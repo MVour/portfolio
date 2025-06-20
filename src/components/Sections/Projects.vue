@@ -17,14 +17,14 @@
             <template v-for="pr_grp in projectsInfo.groups">
                 <template v-if="filterProjects(pr_grp).length">
                     <v-card-subtitle class="text-uppercase">{{ pr_grp }}</v-card-subtitle>
-                    <v-slide-group show-arrows="always">
+                    <v-slide-group show-arrows="desktop" >
                         <ProjectCard v-for="project in filterProjects(pr_grp)" :key="project.title" :project="project" />
                     </v-slide-group>
                 </template>
             </template>
             <template v-if="remainingProjects.length">
                 <v-card-subtitle class="text-uppercase">Remaining Projects</v-card-subtitle>
-                <v-slide-group show-arrows="always">
+                <v-slide-group show-arrows="desktop">
                     
                     <ProjectCard 
                         v-for="project in remainingProjects" 

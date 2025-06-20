@@ -26,19 +26,28 @@
                             {{ item }}
                         </v-chip>
                     </v-chip-group>
-                    <v-divider :thickness="3" ></v-divider>
-                        
+                    <v-divider :thickness="3" ></v-divider>                        
                     <v-timeline class="" :side="timelineSide" style="width: 100%;"> 
-                        <v-timeline-item  v-for="(edu, index) in timelineItems" :key="index">
+                        <v-timeline-item v-for="(edu, index) in timelineItems" :key="index">
                             <template v-slot:opposite>
-                                {{ edu.year_start }} - {{ edu.year_end }} 
+                                <div class="text-sm-b2  ma-0 pa-0 font-weigh-medium" style="width:auto;display:flex;flex-flow:column;flex-wrap:wrap;align-items: center;justify-content:center;">
+                                    <span>
+                                        {{ edu.year_start }}
+                                    </span>
+                                    <span>
+                                        -
+                                    </span>
+                                    <span>
+                                        {{ edu.year_end }} 
+                                    </span>
+                                </div>
                             </template>
                             <template v-slot:icon>
-                                <v-avatar size="70">
+                                <v-avatar :size="iconSizeMedia">
                                     <v-img :src="getImage(edu.institution.img_path)" />
                                 </v-avatar>
                             </template>
-                            <v-card style="overflow:visible;max-width: 100%;" variant="elevated" class=" pa-4 elevation-5">
+                            <v-card :width="cardWidthMedia" style="overflow:visible;" variant="elevated" class=" pa-4 elevation-5">
                                 <v-icon size="40"  style="position:absolute; top:-20px;left:5%;" 
                                     :icon="edu.degree ? 'mdi-school' : 'mdi-domain'">
                                 </v-icon>
@@ -103,6 +112,24 @@ const display = useDisplay();
 const timelineSide = computed(() => {
     return display.name.value === 'xs' ? 'end' : 
             display.name.value === 'sm' ? 'end' : undefined;
+});
+
+
+const cardWidthMedia = computed(() => {
+    return display.name.value === 'xs' ? '200px' : 
+           display.name.value === 'sm' ? '200px' : 
+           display.name.value === 'md' ? '400px' : 
+           display.name.value === 'lg' ? '400px' : 
+           display.name.value === 'xl' ? '500px' : 
+           display.name.value === 'xxl' ? '100%' : '200px';
+});
+
+const iconSizeMedia = computed(() => {
+    return display.name.value === 'xs' ? 40 : 
+           display.name.value === 'sm' ? 60 : 
+           display.name.value === 'md' ? 60 : 
+           display.name.value === 'lg' ? 70 : 
+           display.name.value === 'xl' ? 70 : 30;
 });
 
 const toggleTimeline = ref<string[]>(['Education', 'Work', ]);

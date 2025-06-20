@@ -163,22 +163,25 @@ const mediaSectionStyle = computed(() => {
                 width: '100%',
                 alignItems: 'flex-start',
                 justifyContent: 'flex-start',
-                margin: '50px 22.5vw 50px auto',
+                margin: '50px 22.5vw 50px auto'
             };
 
         case 'lg':
             return {
                 width: '55vw',
-                margin: '50px 22.5vw 50px auto',
+                margin: '50px 22.5vw 50px auto'
             };
 
         case 'xl':
             return {
                 width: '55vw',
-                margin: '50px 22.5vw 50px auto',
+                margin: '50px 22.5vw 50px auto'
             };
         default:
-            return {};
+            return {
+                width: '55vw',
+                margin: '50px 22.5vw 50px auto'
+            };
     }
 });
 
