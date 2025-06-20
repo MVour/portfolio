@@ -225,6 +225,7 @@ const logoWidthMedia = computed(() => {
   flex-flow: row wrap;
   height:auto;
   width:100%;
+  padding: 10px;
   justify-content: space-between;
   align-items: flex-end;
   &:before {
