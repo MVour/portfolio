@@ -1,8 +1,8 @@
 <template>
   <v-card
     height="70vh"
-    width="100%"
-    class="d-flex justify-center align-center"
+    width="100vw"
+    class="d-flex justify-center align-center pa-0 ma-0"
     style="position: relative; overflow: hidden;"
     flat
     :color="theme.current.value.colors.background" 
@@ -11,7 +11,7 @@
     <div class="cube-container">
       <v-tooltip text="Click to view project details" location="top" v-for="cube in cubes" :key="cube.id">
         <template v-slot:activator="{props}">
-          <v-sheet elevation="8" :color="theme.current.value.colors.secondary" v-bind="props"
+          <v-sheet elevation="8" :color="theme.current.value.colors.primary" v-bind="props"
             :key="cube.id"
             @mouseenter="cube.isHovered=true"
             @mouseleave="cube.isHovered=false"
@@ -28,32 +28,42 @@
       </v-tooltip>
     </div>
 
-    <v-card-text 
-      class="text-h3 d-flex flex-row align-center justify-center "
-      style="position: relative; text-align: center;flex-wrap: wrap;"
+    <v-card-text  :width="logoWidthMedia"
+      class="d-flex flex-row align-center justify-center "
+      style="position: relative; text-align: center;flex-wrap: wrap;flex-grow:0"
     >
-      <div class="logo-container">
-        <v-avatar  class="page-logo" style="z-index:3"  size="300">
+      <div class="logo-container" >
+        <v-avatar  class="page-logo" style="z-index:3"  :size="logoSizeMedia">
           <v-img  :src="selfImg" alt="selfImg"></v-img>
         </v-avatar>
-        <div  class="ml-6 text-left page-logo" style="z-index:3; display:flex; flex-direction: column;justify-content: end;">
+        <div  class="ml-6 text-left page-logo text-xs-h6  text-sm-h2 text-md-h3 text-lg-h2 text-xl-h1 text-xxl-h1" style="z-index:3; display:flex; flex-direction: column;justify-content: end;">
           <div class="display-1 ">{{ name_first }}</div>
           <div class="display-1 ">{{ name_last }}</div>
-          <div class="text-h6 font-weight-thin font-italic job">{{ job_title }}</div>
+          <div class="display-1 text-h6 font-weight-bold font-italic job" 
+            :style="{ 
+                color: theme.current.value.dark ? 'black' : 'white', 
+                backgroundColor: theme.current.value.dark? 'white' : 'black', 
+                // backgroundColor: theme.current.value.colors.secondary, 
+                width: 'auto', 
+                paddingLeft: '10px' 
+              }">
+              {{ job_title }}
+          </div>
         </div>
-        </div>
+      </div>
     </v-card-text>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useTheme } from 'vuetify'
+import { ref, onMounted, computed } from 'vue'
+import { useTheme, useDisplay } from 'vuetify'
 import  selfImg  from '@/assets/self.jpg' 
 import projectsInfo from '@/data/projects.json'
 
 import personalInfo from '@/data/personal.json'  
 
+const display = useDisplay()
 const name = personalInfo.name
 const name_first = name.split(' ')[0]; 
 const name_last = name.split(' ')[1];
@@ -127,14 +137,51 @@ function handleCubeClick(cube: CubeData) {
 }
 
 
+const logoSizeMedia = computed(() => {
+  switch (display.name.value) {
+    
+    case 'xxl':
+      return 300;
+    case 'xl':
+      return 250;
+    case 'lg':
+      return 300;
+    case 'md':
+      return 300;
+    case 'sm':
+      return 200;
+    case 'xs':
+      return 150;
+    default:
+      return 90;
+  }
+})
+
+const logoWidthMedia = computed(() => {
+  switch (display.name.value) {
+    
+    case 'xxl':
+      return '55vw';
+    case 'xl':
+      return '55vw';
+    case 'lg':
+      return '100%';
+    case 'md':
+      return 'auto';
+    case 'sm':
+      return 'auto';
+    case 'xs':
+      return 'auto';
+    default:
+      return 90;
+  }
+})
+
+
 
 
 
 </script>
-
-
-
-
 
 
 
@@ -172,13 +219,14 @@ function handleCubeClick(cube: CubeData) {
   }
 }
 
-
-
-
 .logo-container {
   position: relative;
   display:flex;
   flex-flow: row wrap;
+  height:auto;
+  width:100%;
+  justify-content: space-between;
+  align-items: flex-end;
   &:before {
     content:  "";
     position: absolute;
@@ -193,7 +241,7 @@ function handleCubeClick(cube: CubeData) {
   }
   
   .page-logo {
-    font: bold 6rem 'Arial', sans-serif;
+    font: bold 2.5rem 'Arial', sans-serif;
     
     animation: clip-path-reveal-1 5s ease 1;
     /* animation: cubic-bezier(1, 0, 0, 1) 5s infinite;   */
