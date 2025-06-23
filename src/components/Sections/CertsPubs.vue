@@ -15,16 +15,40 @@
                 <v-col cols="6" >
                     <v-card-subtitle>Publications</v-card-subtitle>
                     <v-card class="ma-3" v-for="pub in publications" :key="pub.doi" 
-                        :title="pub.title"
-                        :subtitle="pub.date"
                     >
+
+                        <template v-slot:title>
+                            <div class="v-card-title">
+                                {{ pub.title }}
+                            </div>
+                        </template>
+
+
+                        <template v-slot:subtitle>
+                            <div class="">
+                                {{ pub.type }} ~ {{ pub.date }}
+                            </div>
+                        </template>
 
                         <template v-slot:prepend>
                             <v-avatar size="48">
                                 <v-icon size="34">mdi-bookmark</v-icon>
                             </v-avatar>
                         </template>
-                        <v-card-text>{{ pub.doi }}</v-card-text>
+                        <v-card-text>
+                            <v-row>
+                                <v-col cols="3">
+                                    DOI: <br>
+                                    Publisher: <br>
+                                </v-col>
+                                <v-col>
+
+                                    {{ pub.doi }}<br>
+                                    {{ pub.publisher }}
+                                </v-col>
+                            </v-row>
+                        
+                        </v-card-text>
                         
                         <v-card-actions>
                             <v-btn append-icon="mdi-open-in-new" :href="pub.link" target="_blank">View</v-btn>
