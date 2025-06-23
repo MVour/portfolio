@@ -42,7 +42,6 @@
                                     Publisher: <br>
                                 </v-col>
                                 <v-col>
-
                                     {{ pub.doi }}<br>
                                     {{ pub.publisher }}
                                 </v-col>

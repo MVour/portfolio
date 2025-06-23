@@ -1,6 +1,6 @@
 <template>
 
-    <v-card :id="sectionId"  height="auto" :color="theme.current.value.colors.primary" variant="text">
+    <v-card  :id="sectionId"  height="auto" :color="theme.current.value.colors.primary" variant="text">
 
         <template v-slot:prepend>
 
@@ -11,15 +11,31 @@
         <template v-slot:title>
             {{ title }}
         </template>
-        <v-card-text style="display: flex;flex-flow: column;">
-            <v-row>
-                <v-col cols="12" md="6">
-                    <template v-for="techCategory of leftColumnCategories" :key="techCategory">
-                        <h3 class="text-h6 mt-6 mb-3 text-primary">{{ techCategory }}</h3> 
-                        <v-row dense>
-                            <v-col
-                                v-for="(item, index) in stackInfo[techCategory as keyof typeof stackInfo]"
-                                :key="index"
+        <v-card-text style="display: flex;flex-flow: row;flex-wrap: wrap;">
+            <template v-for="techCategory of allCategories" :key="techCategory">
+                <v-container  style="display: flex;flex-flow: column;flex-wrap:wrap;min-width:300px;width:50%;max-width: 50%;">
+                        {{ techCategory }}                            
+                    <v-container class="ma-1" style="max-width:100%;width:100%;justify-content: space-between; display: flex;flex-flow: row;flex-wrap: wrap;">
+
+                        <v-card style="flex-grow:2" variant="text"  max-height="10%" min-width="70px" width="28%" v-for="item in stackInfo[techCategory as keyof typeof stackInfo]">
+                            
+                            <v-img
+                            :src="item.img ? item.img : getImage(item.img_path)"
+                            :alt="`Image for ${item.name}`"
+                            width="auto"
+                            min-width="80px"
+                            
+                            contain
+                            
+                            class="align-self-center"
+                            ></v-img>
+                        </v-card>
+                    </v-container>
+                    <!-- </v-row> -->
+                </v-container>
+            </template> 
+                        <!-- <h3 class="text-h6 mt-6 mb-3 text-primary">{{ techCategory }}</h3>  -->
+                                <!-- :key="index"
                                 cols="12"    sm="6"       lg="4"       xl="3"
                             >
                                 <v-card class="mx-auto pt-3" flat border>  
@@ -29,64 +45,8 @@
                                         width="50%"
                                         contain
                                         class="align-self-center"
-                                    ></v-img>
-                                    
-                                    <v-card-title  class="text-subtitle-1 text-center py-1">
-                                        {{ item.name }}
-                                    </v-card-title>
-
-                                    <v-card-text class="text-center pb-2">
-                                        <v-rating
-                                            :model-value="item.rate"
-                                            readonly
-                                            density="compact"
-                                            size="small"
-                                            class="justify-center"
-                                        ></v-rating>
-                                    </v-card-text>
-                                </v-card>
-                            </v-col>
-                        </v-row>
-                    </template>
-                </v-col>
-                <v-spacer></v-spacer>
-                <v-col cols="12" md="6" class="">
-                    <template v-for="techCategory of rightColumnCategories" :key="techCategory">
-                        <h3 class="text-h6 mt-6 mb-3 text-primary">{{ techCategory }}</h3> 
-                        <v-row dense>
-                            <v-col
-                                v-for="(item, index) in stackInfo[techCategory as keyof typeof stackInfo]"
-                                :key="index"
-                                cols="12" sm="6" lg="4" xl="3"
-                            >
-                                <v-card class="mx-auto" flat border>
-                                    <v-img
-                                        :src="item.img? item.img : getImage(item.img_path)"
-                                        :alt="`Image for ${item.name}`"
-                                        
-                                        class="align-self-center"
-                                        width="50%"
-                                        ></v-img>
-
-                                    <v-card-title class="text-subtitle-1 text-center py-1">
-                                        {{ item.name }}
-                                    </v-card-title>
-
-                                    <v-card-text class="text-center pb-2">
-                                        <v-rating
-                                            :model-value="item.rate"
-                                            readonly
-                                            density="compact"
-                                            size="small"
-                                            class="justify-center"
-                                        ></v-rating>
-                                    </v-card-text>
-                                </v-card>
-                            </v-col>
-                        </v-row>
-                    </template>
-                </v-col>
-            </v-row>
+                                    ></v-img> -->
+                        
         </v-card-text>
     </v-card>
 </template>
