@@ -15,7 +15,7 @@
             <template v-for="techCategory of allCategories" :key="techCategory">
                 <v-container  style="display: flex;flex-flow: column;flex-wrap:wrap;min-width:300px;width:50%;max-width: 50%;">
                         {{ techCategory }}                            
-                    <v-sheet color="transparent" rounded="xl" border="primary  lg" class=" ma-1" style="max-width:100%;width:100%;justify-content: space-between; display: flex;flex-flow: row;flex-wrap: wrap;">
+                    <v-sheet color="transparent" rounded="xl" border="primary  lg" class=" pa-2 ma-1" style="max-width:100%;width:100%;justify-content: space-between; display: flex;flex-flow: row;flex-wrap: wrap;">
 
                         <v-card style="flex-grow:2" variant="text"  max-height="10%" min-width="70px" width="28%" v-for="item in stackInfo[techCategory as keyof typeof stackInfo]">
                             

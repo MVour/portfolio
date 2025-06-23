@@ -71,8 +71,8 @@
                     <v-card-text>
                         <p>{{ edu_selected?.institution.info }}</p> 
                         <p>{{ edu_selected?.institution.location }}</p> 
-                        <p>{{ edu_selected?.degree }}</p>
-                        <p>{{ edu_selected?.grade }}</p> 
+                        <!-- <p>{{ edu_selected?.degree }}</p>
+                        <p>{{ edu_selected?.grade }}</p>  -->
                         <p v-if="edu_selected?.institution.additional_info?.inst_link">
                             <a :href="edu_selected?.institution.additional_info.inst_link" target="_blank">Institution Link</a>
                         </p> 

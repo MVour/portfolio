@@ -32,22 +32,25 @@
       class="d-flex flex-row align-center justify-center "
       style="position: relative; text-align: center;flex-wrap: wrap;flex-grow:0"
     >
-      <div class="logo-container" >
-        <v-avatar  class="page-logo" style="z-index:3"  :size="logoSizeMedia">
-          <v-img  :src="selfImg" alt="selfImg"></v-img>
-        </v-avatar>
-        <div  class="ml-6 text-left page-logo text-xs-h6  text-sm-h2 text-md-h3 text-lg-h2 text-xl-h1 text-xxl-h1" style="z-index:3; display:flex; flex-direction: column;justify-content: end;">
-          <div class="display-1 ">{{ name_first }}</div>
-          <div class="display-1 ">{{ name_last }}</div>
-          <div class="display-1 text-h6 font-weight-bold font-italic job" 
+      <div class="logo-container " >
+        <div class="page-logo">
+
+          <v-avatar  class="" style="z-index:3"  :size="logoSizeMedia">
+            <v-img  :src="selfImg" alt="selfImg"></v-img>
+          </v-avatar><br>
+          <div  class="ml-6 text-left  text-xs-h6  text-sm-h2 text-md-h3 text-lg-h2 text-xl-h1 text-xxl-h1" style="z-index:3; display:flex; flex-direction: column;justify-content: end;">
+            <div class="display-1 ">{{ name_first }}</div>
+            <div class="display-1 ">{{ name_last }}</div>
+            <div class="display-1 text-h6 font-weight-bold font-italic job" 
             :style="{ 
-                color: theme.current.value.dark ? 'black' : 'white', 
-                backgroundColor: theme.current.value.dark? 'white' : 'black', 
-                // backgroundColor: theme.current.value.colors.secondary, 
-                width: 'auto', 
-                paddingLeft: '10px' 
-              }">
+              color: theme.current.value.dark ? 'black' : 'white', 
+              backgroundColor: theme.current.value.dark? 'white' : 'black', 
+              // backgroundColor: theme.current.value.colors.secondary, 
+              width: 'auto', 
+              paddingLeft: '10px' 
+            }">
               {{ job_title }}
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +201,8 @@ const logoWidthMedia = computed(() => {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  z-index: 1;}
+  z-index: 1;
+}
 
 
 
@@ -243,7 +247,12 @@ const logoWidthMedia = computed(() => {
   
   .page-logo {
     font: bold 2.5rem 'Arial', sans-serif;
-    
+    display:flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
     animation: clip-path-reveal-1 5s ease 1;
     /* animation: cubic-bezier(1, 0, 0, 1) 5s infinite;   */
   }
