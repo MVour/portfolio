@@ -63,6 +63,32 @@
                     </v-timeline>
                 <!-- </v-col> -->
             <v-divider v-if="edu_selected" vertical></v-divider>
+            <v-dialog v-model="showDetails" max-width="600px">
+
+                <v-card 
+                    :title="edu_selected?.degree || edu_selected?.role"
+                    :subtitle="edu_selected?.institution.name || ''">
+                    <v-card-text>
+                        <p>{{ edu_selected?.institution.info }}</p> 
+                        <p>{{ edu_selected?.institution.location }}</p> 
+                        <p>{{ edu_selected?.degree }}</p>
+                        <p>{{ edu_selected?.grade }}</p> 
+                        <p v-if="edu_selected?.institution.additional_info?.inst_link">
+                            <a :href="edu_selected?.institution.additional_info.inst_link" target="_blank">Institution Link</a>
+                        </p> 
+                        
+                        <p v-if="edu_selected?.institution.additional_info?.dpt?.link">
+                            <a :href="edu_selected?.institution.additional_info.dpt.link" target="_blank">{{ edu_selected.institution.additional_info.dpt.name }}</a>
+                        </p> 
+                        <p v-if="edu_selected?.institution.additional_info?.info">{{ edu_selected?.institution.additional_info.info }}</p> 
+                        
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn @click="clearSelection" color="secondary">Close</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+
             <!-- <v-drawer>
                 <v-card v-if="edu_selected" class="stickyCard" 
                     :title="edu_selected.degree || edu_selected.role"
@@ -80,13 +106,7 @@
                         <p>{{ edu_selected.grade }}</p> 
                         <p v-if="edu_selected.institution.additional_info?.info">{{ edu_selected.institution.additional_info.info }}</p> 
                         
-                        <p v-if="edu_selected.institution.additional_info?.inst_link">
-                            <a :href="edu_selected.institution.additional_info.inst_link" target="_blank">Institution Link</a>
-                        </p> 
                         
-                        <p v-if="edu_selected.institution.additional_info?.dpt?.link">
-                            <a :href="edu_selected.institution.additional_info.dpt.link" target="_blank">{{ edu_selected.institution.additional_info.dpt.name }}</a>
-                        </p> 
                         
                         <v-btn @click="clearSelection" color="secondary">Close</v-btn>
                     </v-card-text>
@@ -243,11 +263,13 @@ const edu_selected = ref<TimelineEntry | null>(null);
 // Function to set the selected education item
 function selectEducation(edu: TimelineEntry) {
     edu_selected.value = edu;
+    toggleDetails();
 }
 
 // Function to clear the selection
 function clearSelection() {
     edu_selected.value = null;
+    showDetails.value = false;
 }
 
 
@@ -264,7 +286,12 @@ function getImage(imgPath: string): string {
 
 
 
+const showDetails = ref(false);
+const toggleDetails = () => {
+    showDetails.value = !showDetails.value;
+};
 </script>
+
 
 <style scoped>
 

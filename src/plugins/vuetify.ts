@@ -36,6 +36,8 @@ const darkTheme = {
   colors: {
     background: '#121212',
     surface: '#1E1E1E',
+    // "on-background": "#bb61c1",
+    // "on-surface": "#bb61c1",
     primary: colors.indigo.lighten1,
     secondary: '#424242', 
     error: '#b41c2b',

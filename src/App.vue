@@ -40,8 +40,11 @@
 
 </script>
 
-<style >
+<style lang="scss">
 
+.v-card-subtitle{
+  /* Alternatively, use Vue style binding for dynamic color */
+}
 
 *{
   /* outline: 10px solid red !important; */

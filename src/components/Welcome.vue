@@ -265,7 +265,7 @@ const logoWidthMedia = computed(() => {
 
 
 .job {
-  animation: glitch 3s infinite; /* Added duration and iteration count */
+  animation: glitch 8s infinite; /* Added duration and iteration count */
   color: white; /* Added color property for better visibility */
 }
 
