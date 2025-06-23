@@ -12,7 +12,7 @@
         </template>
         <v-card-text style="display: flex;flex-flow: column;">
             <v-row>
-                <v-col cols="6" >
+                <v-col lg="6" md="6" sm="12" xs="12" >
                     <v-card-subtitle>Publications</v-card-subtitle>
                     <v-card class="ma-3" v-for="pub in publications" :key="pub.doi" 
                     >
@@ -35,17 +35,15 @@
                                 <v-icon size="34">mdi-bookmark</v-icon>
                             </v-avatar>
                         </template>
-                        <v-card-text>
+                        <v-card-text class="pa-10">
                             <v-row>
-                                <v-col cols="3">
-                                    DOI: <br>
-                                    Publisher: <br>
-                                </v-col>
-                                <v-col>
+                                    DOI:
                                     {{ pub.doi }}<br>
-                                    {{ pub.publisher }}
-                                </v-col>
                             </v-row>
+                            <v-row>
+                                    Publisher:
+                                    {{ pub.publisher }}
+                                </v-row>
                         
                         </v-card-text>
                         
@@ -55,7 +53,7 @@
                     </v-card>
                 </v-col>
                 
-                <v-col cols="6" v-if="certifications.length > 0"  >
+                <v-col cols="6"  md="12" sm="12" xs="12" v-if="certifications.length > 0"  >
                     <v-card-subtitle>Certifications</v-card-subtitle>
                     <v-card class="ma-3" v-for="cert in certifications" :key="cert.name"
                         
