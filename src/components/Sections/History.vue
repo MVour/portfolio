@@ -19,7 +19,7 @@
                 <!-- <v-col  > -->
                     <v-chip-group class="mb-4" column v-model="toggleTimeline" multiple mandatory>
                             <v-chip  v-for="item in ['Education', 'Work']" :key="item" :value="item" variant="elevated"
-                            :color="theme.current.value.colors.secondary"
+                            :color="theme.current.value.colors.accent"
                             text-color="white"
                             @click=""
                             >
@@ -54,7 +54,23 @@
                                 
                                 <v-card-title>{{ edu.degree || edu.role }}</v-card-title>
                                 <v-card-subtitle>{{ edu.institution.name }}</v-card-subtitle>
-                                <v-card-text>{{ edu.institution.info }}, {{ edu.institution.location }} </v-card-text>
+                                <v-card-text>
+                                    {{ edu.institution.info }}, {{ edu.institution.location }}
+
+                                    <v-row class="" v-if="['xl', 'lg', 'xxl'].includes(display.name.value) && edu.achievements?.length">
+                                        <v-col cols="12">
+                                            <v-divider class="ma-2"></v-divider>
+                                            <h4 :style="{color: theme.current.value.colors.accent}"> Personal achievements:<br><br></h4>
+                                            <p > 
+                                            </p>
+                                                <ul>
+                                                    <li v-for="ach in edu?.achievements" :key="ach">{{ ach }}
+                                                    <br><br>
+                                                </li>
+                                                </ul> 
+                                        </v-col>
+                                    </v-row>
+                                </v-card-text>
                                 <v-card-actions>
                                     <v-btn @click="selectEducation(edu)" color="primary">View More</v-btn>
                                 </v-card-actions>
@@ -65,26 +81,43 @@
             <v-divider v-if="edu_selected" vertical></v-divider>
             <v-dialog v-model="showDetails" max-width="600px">
 
-                <v-card 
-                    :title="edu_selected?.degree || edu_selected?.role"
-                    :subtitle="edu_selected?.institution.name || ''">
-                    <v-card-text>
-                        <p>{{ edu_selected?.institution.info }}</p> 
-                        <p>{{ edu_selected?.institution.location }}</p> 
-                        <!-- <p>{{ edu_selected?.degree }}</p>
-                        <p>{{ edu_selected?.grade }}</p>  -->
-                        <p v-if="edu_selected?.institution.additional_info?.inst_link">
-                            <a :href="edu_selected?.institution.additional_info.inst_link" target="_blank">Institution Link</a>
-                        </p> 
-                        
-                        <p v-if="edu_selected?.institution.additional_info?.dpt?.link">
-                            <a :href="edu_selected?.institution.additional_info.dpt.link" target="_blank">{{ edu_selected.institution.additional_info.dpt.name }}</a>
-                        </p> 
+                <v-card max-height="70vh" >
+
+                    <v-card-title>{{ edu_selected?.degree || edu_selected?.role }}</v-card-title>
+                    <v-card-subtitle>{{ edu_selected?.institution.name || '' }}</v-card-subtitle>
+                    <v-card-text style="overflow-y: auto;" >
+                            <!-- <p>{{ edu_selected?.institution.location }}</p>  -->
+                            
                         <p v-if="edu_selected?.institution.additional_info?.info">{{ edu_selected?.institution.additional_info.info }}</p> 
-                        
+                        <v-row class="" v-if="['xs', 'sm', 'md'].includes(display.name.value)">
+                            <v-col cols="12">
+                                <v-divider class="ma-2"></v-divider>
+                                <h5> Personal achievements:<br><br></h5>
+                                <p v-for="ach in edu_selected?.achievements" :key="ach"> 
+                                    ~ {{ ach }} <br><br></p>
+                            </v-col>
+                        </v-row>
+
+
                     </v-card-text>
+                            
+                        
                     <v-card-actions>
-                        <v-btn @click="clearSelection" color="secondary">Close</v-btn>
+                        <v-btn style="align-self: flex-start;justify-self: flex-start;" v-if="edu_selected?.institution.additional_info?.dpt?.link"
+                            :href="edu_selected?.institution.additional_info.dpt.link"
+                            target="_blank"
+                        >
+                            {{ edu_selected.institution.additional_info.dpt.name }}
+                        </v-btn>
+
+                        <v-btn v-if="edu_selected?.institution.additional_info?.inst_link"
+                            :href="edu_selected?.institution.additional_info.inst_link"
+                            target="_blank"
+                        >
+                            Institution Link
+                        </v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn @click="clearSelection" :color="theme.current.value.colors.error">Close</v-btn> 
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -222,6 +255,8 @@ interface TimelineEntry {
     grade?: string;  // Optional for WorkEntry
     role?: string;   // Optional for EducationEntry
     info?: string;   // Optional for EducationEntry (used in WorkEntry)
+    achievements?: string[]; // Optional for both, used in EducationEntry
+    description?: string; // Optional for both, used in WorkEntry
 }
 
 
