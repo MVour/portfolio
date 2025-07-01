@@ -11,9 +11,11 @@
             "additional_info": { 
                 "inst_link": "https://en.uoa.gr/",
                 "dpt": { "name": "DIT", "link": "https://dpt.uoa.gr/" },
-                "info": "Department of Informatics and Telecommunications"
+                "info": "The Department of Informatics and Telecommunications originated as a cross-departmental undergraduate program between the Departments of Physics and Mathematics in 1986 and it evolved into an independent department in 1989. It belongs to the Faculty of Science of the National and Kapodistrian University of Athens."
             } 
-        }, 
+        },
+        "description": "",
+        "achievements": [],
         "degree": "BSc in Informatics and Telecommunications", 
         "grade": "A"
     },
@@ -31,7 +33,9 @@
                 "dpt": { "name": "", "link": "" }, 
                 "info": "" 
             } 
-        }, 
+        },
+        "description": "description",
+        "achievements": [],
         "degree": "High School", 
         "grade": "B"
     }

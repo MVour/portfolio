@@ -24,7 +24,8 @@
             </template>
             <template v-if="remainingProjects.length">
                 <v-card-subtitle class="text-uppercase">Remaining Projects</v-card-subtitle>
-                <v-slide-group show-arrows="desktop">
+                <v-slide-group show-arrows="desktop" center-active>
+
                     
                     <ProjectCard 
                         v-for="project in remainingProjects" 

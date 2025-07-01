@@ -137,6 +137,15 @@ function getCubeStyle(cube: CubeData) {
 
 function handleCubeClick(cube: CubeData) {
   console.log('Cube clicked:', cube.id)
+  if (cube.project) {
+    const projectUrl = cube.project.live_url || cube.project.repo_url || null;
+    if (projectUrl) {
+      window.open(projectUrl, '_blank');
+    }
+  }
+  else {
+    console.warn('No project URL found for cube:', cube.id);
+  }
 }
 
 

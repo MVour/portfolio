@@ -8,14 +8,20 @@
             "location": "Greece", 
             "info": "Netcompany Intrasoft", 
             "img_path": "n.png",
+            
             "additional_info": { 
-                "inst_link": "https://en.uoa.gr/",
-                "dpt": { "name": "DIT", "link": "https://dpt.uoa.gr/" },
-                "info": "Department of Informatics and Telecommunications"
             } 
         }, 
+        "achievements": [
+            "Led system integration and CI/CD tasks as Work Package and Task Leader in multi-partner EU projects",
+            "Led technical meetings across international partner organizations to align system architecture, data flows, and interface designs",
+            "Developed full-stack applications using Java (Spring Boot) and Vue.js, delivering functional assets for the research department and research projects",
+            "Produced detailed technical documentation including interface mappings, data exchange specs, and UML diagrams",
+            "Co-authored a peer-reviewed research paper presented at DATE 2025, based on work in GreenData.AI EU Project"
+        ],
+        
         "role": "Software Engineer", 
-        "info": ""
+        "description": "description"
     },
     {
         "year_end": "Apr 2022", 
@@ -32,7 +38,12 @@
                 "info": "" 
             } 
         }, 
-        "role": "Software Engineer | Internship", 
-        "info": "B"
+        "achievements": [
+            "Assisted in building a modular MLOps prototype with components for model tracking, orchestration, and logging",
+            "Supported automated deployments and system setup across virtual machines using configuration tools",
+            "Gained hands-on experience in integration pipelines and multi-tool interoperability"
+        ],
+        "description": "description",
+        "role": "Software Engineer | Internship"
     }
 ]
