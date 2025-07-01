@@ -36,7 +36,7 @@
             "description_short": "This portofolio!",
             "repo_url": "https://github.com/MVour/portofolio",
             "live_url": null,
-            "tags": ["Vue.js", "Node.js"],
+            "tags": ["Vue.js"],
             "icon": "mdi-card-account-details-outline" 
         },
         
@@ -70,7 +70,7 @@
         },
         {
             "title": "FaceIn",
-            "description": "A sample web application showcasing modern client-server architectures and frameworks. Likely includes a frontend (HTML/CSS/JavaScript or framework like React/Vue), a backend (Node.js, Python/Flask, or similar), and demonstrations of RESTful APIs, database interactions, and deployment practices. It serves as a reference for common web application technologies, demonstrating how components integrate into a cohesive full‑stack system.",
+            "description": "A sample web application showcasing modern client-server architectures and frameworks. Frontend developed with VueJs and backend with Node.js. It serves as a reference for common web application technologies, demonstrating how components integrate into a cohesive full‑stack system.",
             "description_short": "A demo full‑stack web application mimicing LinkedIn, illustrating key modern web technologies and architectural patterns.",
             "repo_url": "https://github.com/rania-v/web-application-technologies",
             "live_url": null,

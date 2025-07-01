@@ -15,15 +15,15 @@
                 {{ title }}
         </template>
         <v-card-subtitle> Contact me</v-card-subtitle>
-        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: column;">
+        <v-card-text class="text-justify text-h6 font-weight-light" style="display: flex;flex-flow: row;">
 
         <!-- <v-img style="position:absolute;left:50%;" cover :src="contact_img" width="50%" height="auto" alt="Contact Illustration" /> -->
             <v-list density="comfortable" width="50%" min-width="300px">
                 <v-list-item >
                     <template v-slot:prepend>
-                        <v-img :src="linkedin_svg" width="40" height="40"/>
+                        <v-icon color="" icon="mdi-linkedin" width="40" height="40"/>
                     </template>
-                    <v-list-item-title style="margin-left:10px" v-text="personalInfo.linkedin.username"></v-list-item-title>
+                    <v-list-item-title  v-text="personalInfo.linkedin.username"></v-list-item-title>
                     <template v-slot:append>
                         <v-btn variant="flat" icon :href="personalInfo.linkedin.link" target="_blank">
                             <v-icon>mdi-open-in-new</v-icon>
@@ -33,9 +33,9 @@
                 <v-divider></v-divider>
                 <v-list-item >
                     <template v-slot:prepend>
-                        <v-img :src="email_svg" width="40" height="40"/>
+                        <v-icon icon="mdi-gmail" width="40" height="40"/>
                     </template>
-                    <v-list-item-title style="margin-left:10px" v-text="personalInfo.contact.email"></v-list-item-title>
+                    <v-list-item-title v-text="personalInfo.contact.email"></v-list-item-title>
                     <template v-slot:append>
                         <v-btn variant="flat" icon :href="'mailto:' + personalInfo.contact.email" target="_blank">
                             <v-icon>mdi-pen</v-icon>
@@ -45,15 +45,28 @@
                 <v-divider></v-divider>
                 <v-list-item >
                     <template v-slot:prepend>
-                        <v-img :src="whatsapp_svg" width="40" height="40"/>
+                        <v-icon icon="mdi-whatsapp" width="40" height="40"/>
                     </template>
-                    <v-list-item-title style="margin-left:10px" v-text="personalInfo.contact.phone"></v-list-item-title>
+                    <v-list-item-title  v-text="personalInfo.contact.phone"></v-list-item-title>
                     <template v-slot:append>
                         <v-btn variant="flat" icon :href="'tel:' + personalInfo.contact.phone" target="_blank">
                             <v-icon>mdi-phone</v-icon>
                         </v-btn>
                     </template>
                 </v-list-item>
+                <v-divider></v-divider>
+                <v-list-item >
+                    <template v-slot:prepend>
+                        <v-icon  icon="mdi-file-account" size="large"/>
+                    </template>
+                    <v-list-item-title  v-text="'CV'"></v-list-item-title>
+                    <template v-slot:append>
+                        <v-btn variant="flat" icon @click="downloadCV()" >
+                            <v-icon>mdi-download</v-icon>
+                        </v-btn>
+                    </template>
+                </v-list-item>
+                
             </v-list>
         </v-card-text>
     </v-card>
@@ -68,6 +81,7 @@ import email_svg from '@/assets/fa_icons/email.svg';
 import whatsapp_svg from '@/assets/fa_icons/whatsapp.svg';
 import contact_img from '@/assets/illustrations/contact.svg';
 
+const cv_path = '/public/CV.pdf'
 const theme = useTheme(); 
 
 const props = defineProps<{
@@ -114,6 +128,16 @@ function getContent() {
     return tab ? tab.content : 'NOPE';
 }
 
-
+function downloadCV() {
+      // For button click, you can programmatically create an anchor element
+      // and click it, which is useful if you want to perform other logic
+      // before triggering the download.
+    const link = document.createElement('a');
+    link.href = cv_path;
+    link.download = 'CV_'+ personalInfo.name.replace(/ /g, '_');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 </script>

@@ -10,6 +10,9 @@
             "img_path": "n.png",
             
             "additional_info": { 
+                "inst_link": "https://netcompany.com/", 
+                "dpt": { "name": "RID", "link": "" }, 
+                "info": "Netcompany-Intrasoft is a leading European IT Solutions and Services Group with strong international presence and expertise, offering innovative and added-value solutions of the highest quality to a wide range of international and national public and private organizations. The Company’s Head Offices are located in Luxembourg (2b rue Nicolas Bové, L-1253 Luxembourg). Netcompany-Intrasoft was founded in 1996. As of November 2021, Netcompany-Intrasoft became a member of the Netcompany Group A/S, a Denmark located IT company founded in 2000. Netcompany is the fastest growing and most successful IT services company in the Nordics, owning vast technology experience and deep industry-specific knowledge, creating innovative solutions tailored to meet business goals. Netcompany-Intrasoft employs more than 3,500 highly skilled professionals, representing over 50 different nationalities and mastering more than 30 languages."
             } 
         }, 
         "achievements": [
@@ -33,9 +36,9 @@
             "info": "Intrasoft International", 
             "img_path": "intr_intrn.png",
             "additional_info": { 
-                "inst_link": "", 
-                "dpt": { "name": "", "link": "" }, 
-                "info": "" 
+                "inst_link": "https://netcompany.com/", 
+                "dpt": { "name": "RID", "link": "" }, 
+                "info": "Netcompany-Intrasoft is a leading European IT Solutions and Services Group with strong international presence and expertise, offering innovative and added-value solutions of the highest quality to a wide range of international and national public and private organizations. The Company’s Head Offices are located in Luxembourg (2b rue Nicolas Bové, L-1253 Luxembourg). Netcompany-Intrasoft was founded in 1996. As of November 2021, Netcompany-Intrasoft became a member of the Netcompany Group A/S, a Denmark located IT company founded in 2000. Netcompany is the fastest growing and most successful IT services company in the Nordics, owning vast technology experience and deep industry-specific knowledge, creating innovative solutions tailored to meet business goals. Netcompany-Intrasoft employs more than 3,500 highly skilled professionals, representing over 50 different nationalities and mastering more than 30 languages."
             } 
         }, 
         "achievements": [

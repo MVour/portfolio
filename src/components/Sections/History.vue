@@ -53,7 +53,7 @@
                                 </v-icon>
                                 
                                 <v-card-title>{{ edu.degree || edu.role }}</v-card-title>
-                                <v-card-subtitle>{{ edu.institution.name }}</v-card-subtitle>
+                                <v-card-subtitle>{{ edu.institution.name }} {{ edu.institution.additional_info?.dpt?.name ? ' || ' + edu.institution.additional_info.dpt.name : '' }}</v-card-subtitle>
                                 <v-card-text>
                                     {{ edu.institution.info }}, {{ edu.institution.location }}
 
@@ -110,11 +110,11 @@
                             {{ edu_selected.institution.additional_info.dpt.name }}
                         </v-btn>
 
-                        <v-btn v-if="edu_selected?.institution.additional_info?.inst_link"
+                        <v-btn color="accent" v-if="edu_selected?.institution.additional_info?.inst_link"
                             :href="edu_selected?.institution.additional_info.inst_link"
                             target="_blank"
                         >
-                            Institution Link
+                            Visit website
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn @click="clearSelection" :color="theme.current.value.colors.error">Close</v-btn> 

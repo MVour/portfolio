@@ -10,7 +10,7 @@
             "img_path": "nkua.png",
             "additional_info": { 
                 "inst_link": "https://en.uoa.gr/",
-                "dpt": { "name": "DIT", "link": "https://dpt.uoa.gr/" },
+                "dpt": { "name": "DIT", "link": "https://www.di.uoa.gr/en" },
                 "info": "The Department of Informatics and Telecommunications originated as a cross-departmental undergraduate program between the Departments of Physics and Mathematics in 1986 and it evolved into an independent department in 1989. It belongs to the Faculty of Science of the National and Kapodistrian University of Athens."
             } 
         },
@@ -29,9 +29,9 @@
             "info": "Anavryta Experimental Lyceum", 
             "img_path": "anavryta.png",
             "additional_info": { 
-                "inst_link": "", 
-                "dpt": { "name": "", "link": "" }, 
-                "info": "" 
+                "inst_link": "http://lyk-peir-anavr.att.sch.gr/", 
+                "dpt": { "name": "", "link": "http://lyk-peir-anavr.att.sch.gr/" }, 
+                "info": "The Anavryta Model Lyceum, colloquially referred to simply as Anavryta, is a model, co-educational, public lyceum, located in the northern suburb of Maroussi in Athens, Greece. The same complex houses the Anavryta Experimental Gymnasium as well. It was established in 1940, shortly before the beginning of the World War II, as the Anavryta Classical Lyceum" 
             } 
         },
         "description": "description",
