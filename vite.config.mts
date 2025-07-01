@@ -12,7 +12,7 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production'
-    ? '/portofolio/' // Replace with your repository name (e.g., '/my-vue-app/')
+    ? '/portfolio/' //  repository name
     : '/',
   plugins: [
     Vue({

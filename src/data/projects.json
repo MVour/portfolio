@@ -31,10 +31,10 @@
         },
         
         {
-            "title": "Web Portofolio",
+            "title": "Web Portfolio",
             "description": "A personal website showcasing projects and skills.",
-            "description_short": "This portofolio!",
-            "repo_url": "https://github.com/MVour/portofolio",
+            "description_short": "This portfolio!",
+            "repo_url": "https://github.com/MVour/portfolio",
             "live_url": null,
             "tags": ["Vue.js"],
             "icon": "mdi-card-account-details-outline" 
