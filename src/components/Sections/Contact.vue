@@ -134,7 +134,7 @@ function downloadCV() {
       // before triggering the download.
     const link = document.createElement('a');
     link.href = cv_path;
-    link.download = 'CV_'+ personalInfo.name.replace(/ /g, '_');
+    link.download = 'CV_'+ personalInfo.name.replace(/ /g, '_') + '.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
