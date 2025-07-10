@@ -81,7 +81,7 @@ import email_svg from '@/assets/fa_icons/email.svg';
 import whatsapp_svg from '@/assets/fa_icons/whatsapp.svg';
 import contact_img from '@/assets/illustrations/contact.svg';
 
-const cv_path = '/public/CV.pdf'
+const cv_path = '/CV.pdf'
 const theme = useTheme(); 
 
 const props = defineProps<{
