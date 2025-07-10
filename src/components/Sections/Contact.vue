@@ -62,7 +62,7 @@
                     <v-list-item-title  v-text="'CV'"></v-list-item-title>
                     <template v-slot:append>
                         <v-btn variant="flat" icon @click="downloadCV()" >
-                            <v-icon>mdi-download</v-icon>
+                            <v-icon>mdi-open-in-new</v-icon>
                         </v-btn>
                     </template>
                 </v-list-item>
@@ -134,10 +134,13 @@ function downloadCV() {
       // before triggering the download.
     const link = document.createElement('a');
     link.href = cv_path;
-    link.download = 'CV_'+ personalInfo.name.replace(/ /g, '_') + '.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    window.open(cv_path)
+
+    // link.download = 'CV' + '.pdf';
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
 }
 
 </script>
