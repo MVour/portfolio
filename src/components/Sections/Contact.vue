@@ -81,7 +81,9 @@ import email_svg from '@/assets/fa_icons/email.svg';
 import whatsapp_svg from '@/assets/fa_icons/whatsapp.svg';
 import contact_img from '@/assets/illustrations/contact.svg';
 
-const cv_path = '/CV.pdf'
+// const cv_path = '/CV.pdf'
+const cv_path = `${import.meta.env.BASE_URL}CV.pdf`;
+
 const theme = useTheme(); 
 
 const props = defineProps<{
@@ -135,7 +137,7 @@ function downloadCV() {
     const link = document.createElement('a');
     link.href = cv_path;
 
-    window.open(cv_path)
+    window.open(cv_path, '_blank')
 
     // link.download = 'CV' + '.pdf';
     // document.body.appendChild(link);
